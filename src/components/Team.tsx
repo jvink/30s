@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import RandomId from './RandomId';
 
 interface ITeam {
-    id: number;
     players: Array<string>;
 }
 
 export default function Team() {
-    const [teams, setTeams] = useState<Array<ITeam>>([{id: RandomId(), players: []}]);
+    const [teams, setTeams] = useState<Array<ITeam>>([{players: []}]);
     const [inputs, setInputs] = useState(['']);
 
     function addPlayer(teamIndex: number): void {
@@ -43,7 +41,9 @@ export default function Team() {
 
     function addTeam():void {
         setInputs(inputs.concat(''));
-        setTeams(teams.concat({id: RandomId(), players: []}));
+        setTeams(prevTeams => {
+            return prevTeams.concat({players: []});
+        });
     }
 
     function handleSubmit(e: any, teamIndex: number): void {
