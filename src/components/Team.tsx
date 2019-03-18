@@ -1,42 +1,65 @@
 import React, { useState } from 'react';
 import RandomId from './RandomId';
 
-// interface ITeam {
-//     id: string;
-//     players: Array<IPlayer>;
-// }
-
-// interface IPlayer {
-//     teamId: string;
-//     names: Array<string>;
-// }
+interface ITeam {
+    id: number;
+    players: Array<string>;
+}
 
 export default function Team() {
-    const [index, setIndex] = useState(1);
-    const [players, setPlayers] = useState();
-    const [teams, setTeams] = useState([{id: index, players: ({teamId: index, names: ['Freek', 'Mark']})}]);
+    const [teams, setTeams] = useState<Array<ITeam>>([{id: RandomId(), players: []}]);
+    const [input, setInput] = useState('');
+
+    function addPlayer(teamIndex:number):void {
+        setTeams(prevTeams => {
+            return prevTeams.map((team, idx) => {
+                if(teamIndex === idx) {
+                    return {...prevTeams[teamIndex], players: [...prevTeams[teamIndex].players, input]};
+                } else {
+                    return team;
+                }
+            });
+        });
+    }
+
+    function addTeam():void {
+        setTeams(teams.concat({id: RandomId(), players: []}));
+    }
+
+    function handleSubmit(e: any) {
+        e.preventDefault();
+        setInput('');
+    }
+
+    function handleChange(e: any, idx: number, input:string) {
+        console.log(input);
+        setInput(e.target.value);
+    }
 
     return (
         <div>
-            <h2>Wie doet er mee?</h2>
             {teams.map((team, teamIndex) => {
                 return (
                     <div key={teamIndex}>
-                    <h2>Team {teamIndex + 1}</h2>
+                        <h2>Team {teamIndex + 1}</h2>
                         <ul>
-                            {team.players.names.map((playerName, playerIndex) => {
+                            {team.players.map((player, playerIndex) => {
                                 return (
-                                    <div key={playerIndex}>
-                                        {playerName}
-                                    </div>
+                                    <li key={playerIndex}>
+                                        {player}
+                                    </li>
                                 );
                             })}
-                            <button>Add player</button>
                         </ul>
+                        <form onSubmit={handleSubmit}>
+                            <label>Voeg een speler toe:</label>
+                            <input value={input} onChange={(event) => handleChange(event, teamIndex, "input"+[teamIndex])}/>
+                            <button onClick={() => addPlayer(teamIndex)}>Add player</button>
+                        </form>
                     </div>
                 );
             })}
-            <button>Add Team</button>
+            <button onClick={() => addTeam()}>Add team</button>
         </div>
     );
 }
