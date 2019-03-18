@@ -8,13 +8,32 @@ interface ITeam {
 
 export default function Team() {
     const [teams, setTeams] = useState<Array<ITeam>>([{id: RandomId(), players: []}]);
-    const [input, setInput] = useState('');
+    const [inputs, setInputs] = useState(['']);
 
-    function addPlayer(teamIndex:number):void {
+    function addPlayer(teamIndex: number): void {
         setTeams(prevTeams => {
             return prevTeams.map((team, idx) => {
                 if(teamIndex === idx) {
-                    return {...prevTeams[teamIndex], players: [...prevTeams[teamIndex].players, input]};
+                    return {...prevTeams[teamIndex], players: [...prevTeams[teamIndex].players, inputs[teamIndex]]};
+                } else {
+                    return team;
+                }
+            });
+        });
+    }
+
+    function removePlayer(teamIndex: number, playerIndex: number): void {
+        setTeams(prevTeams => {
+            return prevTeams.map((team, tidx) => {
+                if(teamIndex === tidx) {
+                    team.players.map((player, pidx) => {
+                        if (playerIndex === pidx) {
+                            return {...prevTeams[teamIndex], players: [...prevTeams[teamIndex].players.splice(playerIndex, 1)]};
+                        } else {
+                            return team;
+                        }
+                    });
+                    return team;
                 } else {
                     return team;
                 }
@@ -23,17 +42,25 @@ export default function Team() {
     }
 
     function addTeam():void {
+        setInputs(inputs.concat(''));
         setTeams(teams.concat({id: RandomId(), players: []}));
     }
 
-    function handleSubmit(e: any) {
+    function handleSubmit(e: any, teamIndex: number): void {
         e.preventDefault();
-        setInput('');
+        setInputs(inputs.map((value, j) => {
+            if (teamIndex === j) value = "";
+            return value;
+        }));
     }
 
-    function handleChange(e: any, idx: number, input:string) {
-        console.log(input);
-        setInput(e.target.value);
+    function handleChange(e: any, teamIndex: number): void {
+        setInputs(
+            inputs.map((value, j) => {
+                if (teamIndex === j) value = e.target.value;
+                return value;
+            })
+        )
     }
 
     return (
@@ -47,13 +74,14 @@ export default function Team() {
                                 return (
                                     <li key={playerIndex}>
                                         {player}
+                                        <button onClick={() => removePlayer(teamIndex, playerIndex)}>X</button>
                                     </li>
                                 );
                             })}
                         </ul>
-                        <form onSubmit={handleSubmit}>
-                            <label>Voeg een speler toe:</label>
-                            <input value={input} onChange={(event) => handleChange(event, teamIndex, "input"+[teamIndex])}/>
+                        <form onSubmit={(event) => handleSubmit(event, teamIndex)}>
+                            <label>Player name:</label>
+                            <input value={inputs[teamIndex]} onChange={(event) => handleChange(event, teamIndex)}/>
                             <button onClick={() => addPlayer(teamIndex)}>Add player</button>
                         </form>
                     </div>
