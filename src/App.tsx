@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ITeam from './types/Types';
 import Team from './components/Team';
-import Dice from './components/Dice';
-import Timer from './components/Timer';
+import Game from './components/Game';
 import './App.css';
 
 export default function App() {
+  const [teamsPicked, setTeamsPicked] = useState<Array<ITeam>>();
+
   return (
     <div>
-      <Team/>
-      {/* <Dice maxDice={3}/>
-      <Timer/> */}
+      {teamsPicked ? <Game teams={teamsPicked}/> : <Team onTeamsCreated={(teams: Array<ITeam>) => setTeamsPicked(teams)}/>}
     </div>
   );
 }

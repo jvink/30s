@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
+import ITeam from '../types/Types';
 
-type ITeam = {
-    players: Array<string>;
-}
-
-export default function Team() {
+export default function Team(props: any) {
     const [teams, setTeams] = useState<Array<ITeam>>([{players: []}]);
-    const [inputs, setInputs] = useState(['']);
+    const [inputs, setInputs] = useState<Array<string>>(['']);
 
     function addPlayer(teamIndex: number): void {
         setTeams(prevTeams => {
@@ -24,7 +21,7 @@ export default function Team() {
         setTeams(prevTeams => {
             return prevTeams.map((team, tidx) => {
                 if(teamIndex === tidx) {
-                    team.players.map((player, pidx) => {
+                    team.players.map((p, pidx) => {
                         if (playerIndex === pidx) {
                             return {...prevTeams[teamIndex], players: [...prevTeams[teamIndex].players.splice(playerIndex, 1)]};
                         } else {
@@ -72,6 +69,10 @@ export default function Team() {
         );
     }
 
+    function handleStartGame(): any {
+        props.onTeamsCreated(teams);
+    }
+
     return (
         <div>
             {teams.map((team, teamIndex) => {
@@ -98,6 +99,7 @@ export default function Team() {
                 );
             })}
             <button onClick={() => addTeam()}>Add team</button>
+            <button onClick={() => handleStartGame()}>Start Game</button>
         </div>
     );
 }
