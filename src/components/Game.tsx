@@ -5,12 +5,13 @@ import ITeam from '../types/Types';
 
 export default function Game({teams} : { teams: Array<ITeam>}) {
     const [currentTeam, setCurrentTeam] = useState(getRandomTeam);
+    const [diceValue, setDiceValue] = useState<number>();
 
     function getRandomTeam(): ITeam {
         return teams[Math.floor(Math.random() * teams.length)];
     }
 
-    function nextTeam(): void {
+    function setNextTeam(): void {
         const currentTeamIndex = teams.findIndex((team) => team === currentTeam);
         if (currentTeamIndex === (teams.length - 1)) {
             setCurrentTeam(teams[0]);
@@ -27,9 +28,10 @@ export default function Game({teams} : { teams: Array<ITeam>}) {
                 return ", " + player + " ";
             })}
             are now.
-            <Dice maxDice={3}/>
+            {diceValue}
+            <Dice onDiceRolled={(value: number) => setDiceValue(value)} maxDice={3}/>
             <Timer/>
-            <button onClick={() => nextTeam()}>Next round</button>
+            <button onClick={() => setNextTeam()}>Next round</button>
         </div>
     );
 }
