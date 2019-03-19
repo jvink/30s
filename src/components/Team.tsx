@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import ITeam from '../types/Types';
 
 export default function Team(props: any) {
-    const [teams, setTeams] = useState<Array<ITeam>>([{players: []}]);
+    const faketeams = [{players: ['Freek Vonk', 'Geert Wilders', 'Mark Rutte']}, {players: ['Thierry Baudet', 'Kees van der Staaij', 'Jesse Klaver']}]
+    const [teams, setTeams] = useState<Array<ITeam>>(faketeams);
     const [inputs, setInputs] = useState<Array<string>>(['']);
 
     function addPlayer(teamIndex: number): void {
