@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-interface ITeam {
+type ITeam = {
     players: Array<string>;
 }
 
@@ -46,12 +46,21 @@ export default function Team() {
         });
     }
 
+    function removeTeam(teamIndex: number):void {
+        setTeams(prevTeams => {
+            const list = prevTeams.filter((item, j) => teamIndex !== j);
+            return list;
+        });
+    }
+
     function handleSubmit(e: any, teamIndex: number): void {
         e.preventDefault();
-        setInputs(inputs.map((value, j) => {
-            if (teamIndex === j) value = "";
-            return value;
-        }));
+        setInputs(
+            inputs.map((value, j) => {
+                if (teamIndex === j) value = "";
+                return value;
+            })
+        );
     }
 
     function handleChange(e: any, teamIndex: number): void {
@@ -60,7 +69,7 @@ export default function Team() {
                 if (teamIndex === j) value = e.target.value;
                 return value;
             })
-        )
+        );
     }
 
     return (
@@ -84,6 +93,7 @@ export default function Team() {
                             <input value={inputs[teamIndex]} onChange={(event) => handleChange(event, teamIndex)}/>
                             <button onClick={() => addPlayer(teamIndex)}>Add player</button>
                         </form>
+                        <button onClick={() => removeTeam(teamIndex)}>X</button>
                     </div>
                 );
             })}
