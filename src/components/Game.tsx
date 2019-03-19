@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Dice from './Dice';
 import ITeam from '../types/Types';
+import Dice from './Dice';
+import Words from './Words';
 
 export default function Game({teams} : { teams: Array<ITeam>}) {
     const [currentTeam, setCurrentTeam] = useState(getRandomTeam);
@@ -44,6 +45,8 @@ export default function Game({teams} : { teams: Array<ITeam>}) {
             Dice: {diceValue}<br/>
             {diceValue === 0 || diceValue ? countDownToStart() : <Dice onDiceRolled={(value: number) => setDiceValue(value)} maxDice={3}/>}<br/>
             Timer: {timerValue}<br/>
+            {/* Word component, add a function to get the correct number of answers */}
+            <Words/>
             {countDownValue > 0 ? countDownValue : countDownTimer()}<br/>
             {timerValue > 0 ? null : <button onClick={() => setNextTeam()}>Next round</button>}
         </div>
