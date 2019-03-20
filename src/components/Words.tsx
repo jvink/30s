@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import dutchWords from '../nl.json';
 
-export default function Words() {
+type Props = {
+    getNumberOfCorrectWords: () => void;
+}
+
+export default function Words({getNumberOfCorrectWords}: Props) {
     // Shuffle array
     const shuffledCategories = dutchWords.categories.sort(() => 0.5 - Math.random());
     // Get sub-array of first n elements after shuffled
@@ -15,15 +19,18 @@ export default function Words() {
         words.push(random);
     }
 
+    console.log(document.querySelectorAll('input[type="checkbox"]:checked').length);
+
     return (
-        <ul>
+        <form>
             {words.map((word, index) => {
                 return (
-                    <li key={index}>
+                    <span key={index}>
+                        <input type="checkbox" name={word} value={word}/>
                         {word}
-                    </li>
+                    </span>
                 );
             })}
-        </ul>
+        </form>
     );
 }

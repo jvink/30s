@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import ITeam from '../types/Types';
 import Dice from './Dice';
 import Words from './Words';
+import Countdown from './Countdown';
+import Timer from './Timer';
 
 export default function Game({teams} : { teams: Array<ITeam>}) {
     const [currentTeam, setCurrentTeam] = useState(getRandomTeam);
     const [diceValue, setDiceValue] = useState<number>();
-    const [countDownValue, setCountDownValue] = useState<number>(5);
-    const [timerValue, setTimerValue] = useState<number>(30);
+    const [gameStage, setGameStage] = useState<number>(0);
 
     function getRandomTeam(): ITeam {
         return teams[Math.floor(Math.random() * teams.length)];
@@ -16,8 +17,8 @@ export default function Game({teams} : { teams: Array<ITeam>}) {
     function setNextTeam(): void {
         const currentTeamIndex = teams.findIndex((team) => team === currentTeam);
         setDiceValue(undefined);
-        setCountDownValue(5);
-        setTimerValue(30);
+        setGameStage(0);
+        
         if (currentTeamIndex === (teams.length - 1)) {
             setCurrentTeam(teams[0]);
         } else {
@@ -25,12 +26,16 @@ export default function Game({teams} : { teams: Array<ITeam>}) {
         }
     }
 
-    function countDownToStart(): void {
-        countDownValue > 0 ? setTimeout(() => setCountDownValue(countDownValue - 1), 1000) : console.log("Should get words now, and start timer");
+    function doneCountdown(): void {
+        setGameStage(2);
     }
 
-    function countDownTimer(): void {
-        timerValue > 0 ? setTimeout(() => setTimerValue(timerValue - 1), 1000) : console.log("idk");
+    function doneTimer(): void {
+        setGameStage(3);
+    }
+
+    function getNumberOfCorrectWords(): void {
+        console.log(getNumberOfCorrectWords);
     }
 
     return (
@@ -43,12 +48,12 @@ export default function Game({teams} : { teams: Array<ITeam>}) {
                 })} are now.
             </span>
             Dice: {diceValue}<br/>
-            {diceValue === 0 || diceValue ? countDownToStart() : <Dice onDiceRolled={(value: number) => setDiceValue(value)} maxDice={3}/>}<br/>
-            Timer: {timerValue}<br/>
-            {/* Word component, add a function to get the correct number of answers */}
-            <Words/>
-            {countDownValue > 0 ? countDownValue : countDownTimer()}<br/>
-            {timerValue > 0 ? null : <button onClick={() => setNextTeam()}>Next round</button>}
+            GameStage: {gameStage}
+            {gameStage === 0 ? <Dice onDiceRolled={(value: number) => (setDiceValue(value), setGameStage(1))} maxDice={3}/> : null}
+            {gameStage === 1 ? <Countdown doneCountdown={() => doneCountdown()}/> : null}
+            {gameStage === 2 ? <div><Timer doneTimer={() => doneTimer()}/><Words getNumberOfCorrectWords={() => getNumberOfCorrectWords()}/></div> : null}
+            {/* in the Word component, add a function to get the correct number of answers */}
+            {gameStage === 3 ? <button onClick={() => setNextTeam()}>Next round</button> : null}
         </div>
     );
 }
