@@ -1,0 +1,111 @@
+{
+    "categories": [
+        {
+            "name": "Dieren",
+            "words": [
+                "Olifant",
+                "Walvis",
+                "Zeehond",
+                "Leeuw",
+                "Neushoorn",
+                "Giraffe",
+                "Zeekomkommer",
+                "Lama",
+                "Gorilla",
+                "Papegaai",
+                "Pandabeer",
+                "Kameel",
+                "Slang",
+                "Vogelspin"
+            ]
+        },
+        {
+            "name": "Bekende Nederlanders",
+            "words": [
+                "Johnny de Mol",
+                "Joel Beukers",
+                "Patricia Paay",
+                "André Hazes",
+                "Lange Frans",
+                "Martin Garrix",
+                "Freek Vonk",
+                "Britt Dekker",
+                "Gordon",
+                "Gerard Joling",
+                "Nicolette van Dam"
+            ]
+        },
+        {
+            "name": "Topografie",
+            "words": [
+                "Parijs",
+                "Noordpool",
+                "Madagascar",
+                "Peking",
+                "Sidney",
+                "Berlijn",
+                "Brazilië",
+                "New York",
+                "India",
+                "Zweden",
+                "Hawaii",
+                "Caïro",
+                "Istanbul"
+            ]
+        },
+        {
+            "name": "Muziek",
+            "words": [
+                "Coldplay",
+                "Bohemian Rapsody",
+                "Hardstyle",
+                "Eminem",
+                "Justin Bieber",
+                "Toto",
+                "Smells Like Teen Spirit",
+                "Despacito",
+                "Bitch Lasagna",
+                "Ariana Granda",
+                "Drake",
+                "Post Malone",
+                "Shawn Mendes"
+            ]
+        },
+        {
+            "name": "Space",
+            "words": [
+                "Mars",
+                "International Space Center",
+                "Pluto",
+                "Voyager",
+                "Uranus",
+                "Saturnus",
+                "Zon",
+                "SpaceX",
+                "NASA",
+                "Elon Musk",
+                "Europa",
+                "Asteroïde",
+                "Meteoor"
+            ]
+        },
+        {
+            "name": "History",
+            "words": [
+                "Adolf Hitler",
+                "Julius Ceasar",
+                "Ghandi",
+                "Martin Luther King",
+                "Tweede Wereldoorlog",
+                "Evolutie",
+                "Pearl Harbor",
+                "Koude Oorlog",
+                "Napoleon",
+                "Willem van Oranje",
+                "Vereenigde Oostindische Compagnie",
+                "Armada",
+                "Loopgravenoorlog"
+            ]
+        }
+    ]
+}

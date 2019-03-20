@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
+import dutchWords from '../nl.json';
 
 export default function Words() {
-    const topics = ['supermarket', 'gaming', 'obama', 'music', 'elephant', 'radioactive'];
-    const baseUrl = "https://api.datamuse.com/words?topics=";
-    const [] = useState();
+    // Shuffle array
+    const shuffledCategories = dutchWords.categories.sort(() => 0.5 - Math.random());
+    // Get sub-array of first n elements after shuffled
+    let selectedCategories = shuffledCategories.slice(0, 5);
 
-    function getWords(topic: string) {
-        fetch(baseUrl + topic)
-        .then((res) => res.json())
-        .then((res) => {
-            console.log(res);
-            return res;
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+    // Get random word from each category
+    let words: Array<string> = [];
+    for (let i = 0; i < selectedCategories.length; i ++) {
+        let random = selectedCategories[i].words[Math.floor(Math.random() * selectedCategories[i].words.length)];
+        // Push the random word in the words state
+        words.push(random);
     }
-    getWords(topics[0]);
-    
+
     return (
-        <p>
-            Words
-        </p>
+        <ul>
+            {words.map((word, index) => {
+                return (
+                    <li key={index}>
+                        {word}
+                    </li>
+                );
+            })}
+        </ul>
     );
 }
