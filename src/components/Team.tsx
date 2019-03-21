@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import ITeam from '../types/Types';
 
-export default function Team(props: any) {
-    const faketeams = [{players: ['Freek Vonk', 'Geert Wilders', 'Mark Rutte']}, {players: ['Thierry Baudet', 'Kees van der Staaij', 'Jesse Klaver']}]
+const Team = (props: any) => {
+    const faketeams = [{players: ['Freek Vonk', 'Geert Wilders', 'Mark Rutte'], points: 0}, {players: ['Thierry Baudet', 'Kees van der Staaij', 'Jesse Klaver'], points: 0}]
     const [teams, setTeams] = useState<Array<ITeam>>(faketeams);
     const [inputs, setInputs] = useState<Array<string>>(['']);
 
@@ -40,14 +40,26 @@ export default function Team(props: any) {
     function addTeam():void {
         setInputs(inputs.concat(''));
         setTeams(prevTeams => {
-            return prevTeams.concat({players: []});
+            return prevTeams.concat({players: [], points: 0});
         });
     }
 
     function removeTeam(teamIndex: number):void {
         setTeams(prevTeams => {
-            const list = prevTeams.filter((item, j) => teamIndex !== j);
+            const list = prevTeams.filter((i, j) => teamIndex !== j);
             return list;
+        });
+    }
+    
+    function addPoints(teamIndex: number, correct: number, dice: number):void {
+        setTeams(prevTeams => {
+            return prevTeams.map((team, tidx) => {
+                if(teamIndex === tidx) {
+                    return {...prevTeams[teamIndex], points: prevTeams[teamIndex].points + (correct - dice)};
+                } else {
+                    return team;
+                }
+            });
         });
     }
 
@@ -73,6 +85,8 @@ export default function Team(props: any) {
     function handleStartGame(): any {
         props.onTeamsCreated(teams);
     }
+
+    if (props.dothething) {console.log("AMOUR FIRE")}
 
     return (
         <div>
@@ -104,3 +118,5 @@ export default function Team(props: any) {
         </div>
     );
 }
+
+export default Team;
