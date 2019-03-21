@@ -5,7 +5,7 @@ type Props = {
 }
 
 export default function Timer({doneTimer}: Props) {
-    const [timerValue, setTimerValue] = useState<number>(30);
+    const [timerValue, setTimerValue] = useState<number>(3);
 
     function countDownTimer(): void {
         timerValue > 0 ? setTimeout(() => setTimerValue(timerValue - 1), 1000) : doneTimer();
