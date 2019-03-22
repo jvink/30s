@@ -7,7 +7,6 @@ import Countdown from './Countdown';
 import Timer from './Timer';
 
 const Game = () => {
-
     const [teams, setTeams] = useState<Array<ITeam>>([]);
     const [currentTeam, setCurrentTeam] = useState();
     const [diceValue, setDiceValue] = useState<number>();
