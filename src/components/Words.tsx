@@ -5,7 +5,7 @@ interface Props {
     getCorrectWords: (amount: number) => void
 }
 
-export default function Words(props: Props) {
+const Words = (props: Props) => {
     const [words, setWords] = useState<Array<string>>([]);
 
     useEffect(() => {
@@ -41,3 +41,5 @@ export default function Words(props: Props) {
         </form>
     );
 }
+
+export default Words;

@@ -4,10 +4,10 @@ type Props = {
     doneCountdown: () => void;
 }
 
-export default function Countdown({doneCountdown}: Props) {
+const Countdown = ({doneCountdown}: Props) => {
     const [countdownValue, setCountdownValue] = useState<number>(5);
 
-    function countdownToStart(): void {
+    const countdownToStart = (): void => {
         countdownValue > 0 ? setTimeout(() => setCountdownValue(countdownValue - 1), 1000) : doneCountdown();
     }
 
@@ -19,3 +19,5 @@ export default function Countdown({doneCountdown}: Props) {
         </div>
     );
 }
+
+export default Countdown;

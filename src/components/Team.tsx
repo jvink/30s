@@ -6,7 +6,7 @@ const Team = (props: any) => {
     const [teams, setTeams] = useState<Array<ITeam>>(faketeams);
     const [inputs, setInputs] = useState<Array<string>>(['']);
 
-    function addPlayer(teamIndex: number): void {
+    const addPlayer = (teamIndex: number): void => {
         setTeams(prevTeams => {
             return prevTeams.map((team, idx) => {
                 if(teamIndex === idx) {
@@ -18,7 +18,7 @@ const Team = (props: any) => {
         });
     }
 
-    function removePlayer(teamIndex: number, playerIndex: number): void {
+    const removePlayer = (teamIndex: number, playerIndex: number): void => {
         setTeams(prevTeams => {
             return prevTeams.map((team, tidx) => {
                 if(teamIndex === tidx) {
@@ -37,33 +37,21 @@ const Team = (props: any) => {
         });
     }
 
-    function addTeam():void {
+    const addTeam = ():void => {
         setInputs(inputs.concat(''));
         setTeams(prevTeams => {
             return prevTeams.concat({players: [], points: 0});
         });
     }
 
-    function removeTeam(teamIndex: number):void {
+    const removeTeam = (teamIndex: number):void => {
         setTeams(prevTeams => {
             const list = prevTeams.filter((i, j) => teamIndex !== j);
             return list;
         });
     }
-    
-    function addPoints(teamIndex: number, correct: number, dice: number):void {
-        setTeams(prevTeams => {
-            return prevTeams.map((team, tidx) => {
-                if(teamIndex === tidx) {
-                    return {...prevTeams[teamIndex], points: prevTeams[teamIndex].points + (correct - dice)};
-                } else {
-                    return team;
-                }
-            });
-        });
-    }
 
-    function handleSubmit(e: any, teamIndex: number): void {
+    const handleSubmit = (e: any, teamIndex: number): void => {
         e.preventDefault();
         setInputs(
             inputs.map((value, j) => {
@@ -73,7 +61,7 @@ const Team = (props: any) => {
         );
     }
 
-    function handleChange(e: any, teamIndex: number): void {
+    const handleChange = (e: any, teamIndex: number): void => {
         setInputs(
             inputs.map((value, j) => {
                 if (teamIndex === j) value = e.target.value;
@@ -82,7 +70,7 @@ const Team = (props: any) => {
         );
     }
 
-    function handleStartGame(): any {
+    const handleStartGame = (): any => {
         props.onTeamsCreated(teams);
     }
 

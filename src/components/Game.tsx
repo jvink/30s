@@ -14,13 +14,14 @@ const Game = () => {
     const [gameStage, setGameStage] = useState<number>(0);
     const [correctWords, setCorrectWords] = useState<number>(0);
 
-    function getRandomTeam(): ITeam {
+    const getRandomTeam = (): ITeam => {
         return teams[Math.floor(Math.random() * teams.length)];
     }
 
-    function setNextTeam(): void {
-        const currentTeamIndex = teams.findIndex((team) => team === currentTeam);
+    const setNextTeam = (): void => {
+        const currentTeamIndex = teams.findIndex((team) => team.players === currentTeam.players);
         setDiceValue(undefined);
+        setCorrectWords(0);
         setGameStage(1);
 
         if (currentTeamIndex === (teams.length - 1)) {
@@ -30,42 +31,68 @@ const Game = () => {
         }
     }
 
-    function doneCountdown(): void {
+    useEffect(() => {
+        if (!currentTeam) {
+            setCurrentTeam(getRandomTeam);
+        }
+    }, [teams]);
+
+    const doneTeam = (createdTeams: Array<ITeam>): void => {
+        setTeams(createdTeams);
+        setGameStage(1);
+    }
+
+    const doneDiceRoll = (value: number):void => {
+        setDiceValue(value);
+        setGameStage(2);
+    }
+
+    const doneCountdown = (): void => {
         setGameStage(3);
     }
 
-    function doneTimer(): void {
+    const doneTimer = (): void => {
+        addPoints();
         setGameStage(4);
-        // set teams[ currentteam ] to certain points, correctwords - dice
-        // setTeams(teams)
     }
 
-    function teamsCreated(teamsp: Array<ITeam>) {
-        setTeams(teamsp);
-        setGameStage(1);
+    const addPoints = ():void => {
+        let teamIndex = teams.findIndex((team) => team === currentTeam);
+        setTeams(prevTeams => {
+            return prevTeams.map((team, tidx) => {
+                if((teamIndex === tidx) && diceValue !== undefined) {
+                    return {...prevTeams[teamIndex], points: prevTeams[teamIndex].points + (correctWords - diceValue)};
+                } else {
+                    return team;
+                }
+            });
+        });
     }
     
-    useEffect(() => {
-        setCurrentTeam(getRandomTeam);
-    }, [teams]);
-
     return (
         <div>
-            {gameStage === 0 ? <Team onTeamsCreated={(createdTeams: Array<ITeam>) => teamsCreated(createdTeams)}/> : null}
-            {gameStage === 1 ?
+            {gameStage === 0 ? <Team onTeamsCreated={(createdTeams: Array<ITeam>) => doneTeam(createdTeams)}/> : null}
+            {(gameStage === 1) && currentTeam ?
                 <div>
                     {currentTeam ? currentTeam.players.map((player: string, i: number) => {return player}) : null}
-                    <Dice onDiceRolled={(value: number) => (setDiceValue(value), setGameStage(2))} maxDice={3} />
+                    <Dice onDiceRolled={(value: number) => doneDiceRoll(value)} maxDice={3} />
                 </div> : null}
             {gameStage === 2 ? <Countdown doneCountdown={() => doneCountdown()} /> : null}
             {gameStage === 3 ?
                 <div>
+                    Dice: {diceValue} Words Correct: {correctWords} Total: {correctWords - (diceValue !== undefined ? diceValue : 0)}
                     <Timer doneTimer={() => doneTimer()}/>
                     <Words getCorrectWords={(amount: number) => {
                         setCorrectWords(amount);
                     }}/>
                 </div> : null}
-            {gameStage === 4 ? <button onClick={() => setNextTeam()}>Next round</button> : null}
+            {gameStage === 4 ?
+                <div>
+                    {teams.map((team, i) => {
+                        return <p key={i}>Team van {team.players[0]}: {team.points}</p>
+                    })}
+                    <button onClick={() => setNextTeam()}>Next round</button>
+                </div>: null}
         </div>
     );
 };

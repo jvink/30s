@@ -4,10 +4,10 @@ type Props = {
     doneTimer: () => void;
 }
 
-export default function Timer({doneTimer}: Props) {
-    const [timerValue, setTimerValue] = useState<number>(3);
+const Timer = ({doneTimer}: Props) => {
+    const [timerValue, setTimerValue] = useState<number>(6);
 
-    function countDownTimer(): void {
+    const countDownTimer = (): void => {
         timerValue > 0 ? setTimeout(() => setTimerValue(timerValue - 1), 1000) : doneTimer();
     }
 
@@ -19,3 +19,5 @@ export default function Timer({doneTimer}: Props) {
         </div>
     );
 }
+
+export default Timer;

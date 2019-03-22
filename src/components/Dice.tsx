@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 type Props = {
     maxDice: number;
     onDiceRolled: (value: number) => void;
 }
 
-export default function Dice({maxDice, onDiceRolled}: Props) {
+const Dice = ({maxDice, onDiceRolled}: Props) => {
+    
+    const rollDice = (max: number): void => {
+        onDiceRolled(Math.floor(Math.random() * Math.floor(max)));
+    }
 
     return (
         <div>
@@ -15,7 +19,6 @@ export default function Dice({maxDice, onDiceRolled}: Props) {
         </div>
     );
 
-    function rollDice(max: number): void {
-        onDiceRolled(Math.floor(Math.random() * Math.floor(max)));
-    }
 }
+
+export default Dice;
