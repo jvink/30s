@@ -8,10 +8,10 @@ import Timer from './Timer';
 import '../styles/Game.css';
 
 const Game = () => {
-    const [teams, setTeams] = useState<Array<ITeam>>([{players: ['Freek Vonk', 'Klaas Dijkhof'], points: 12}, {players: ['Thierry Baudet', 'Jan Peter Balkenende'], points: 20}]);
+    const [teams, setTeams] = useState<Array<ITeam>>([]);
     const [currentTeam, setCurrentTeam] = useState();
     const [diceValue, setDiceValue] = useState<number>();
-    const [gameStage, setGameStage] = useState<number>(3);
+    const [gameStage, setGameStage] = useState<number>(0);
     const [correctWords, setCorrectWords] = useState<number>(0);
 
     const getRandomTeam = (): ITeam => {
