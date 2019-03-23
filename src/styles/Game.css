@@ -18,6 +18,10 @@
     color: #f5f6fa;
 }
 
+.game-dice-current {
+    color: #f5f6fa;
+}
+
 .game-countdown {
     text-align: center;
 }
@@ -50,6 +54,15 @@
     flex-direction: column;
 }
 
+.game-words-dice-wrapper {
+    display: flex;
+}
+
+.game-words-title {
+    color: #2f3640;
+    margin-right: 2em;
+}
+
 .game-words-dice {
     background-color: #ffffff;
     border: 2px solid #2f3640;
@@ -61,4 +74,42 @@
     align-items: center;
     font-size: 20px;
     margin-left: auto;
+    margin: 8px;
+}
+
+.game-words-hr {
+    width: 100%;
+    border: 1px solid #2f3640;
+}
+
+.game-results {
+    background-color: #f5f6fa;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 2em;
+    margin: 1em;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-results-title {
+    color: #2f3640;
+    margin-top: 0;
+    margin-bottom: .5em;
+}
+
+.game-results-table {
+    border-collapse: collapse;
+    border: 1px solid #2f3640;
+    margin-bottom: 1em;
+}
+
+.game-results-table-row:nth-child(even) {
+    background-color: #dddddd;
+}
+
+td, th {
+    border: 1px solid #2f3640;
+    padding: .5em;
+    text-align: center;
 }

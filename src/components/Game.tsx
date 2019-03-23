@@ -8,10 +8,10 @@ import Timer from './Timer';
 import '../styles/Game.css';
 
 const Game = () => {
-    const [teams, setTeams] = useState<Array<ITeam>>([]);
+    const [teams, setTeams] = useState<Array<ITeam>>([{players: ['Freek Vonk', 'Klaas Dijkhof'], points: 12}, {players: ['Thierry Baudet', 'Jan Peter Balkenende'], points: 20}]);
     const [currentTeam, setCurrentTeam] = useState();
     const [diceValue, setDiceValue] = useState<number>();
-    const [gameStage, setGameStage] = useState<number>(0);
+    const [gameStage, setGameStage] = useState<number>(3);
     const [correctWords, setCorrectWords] = useState<number>(0);
 
     const getRandomTeam = (): ITeam => {
@@ -68,6 +68,27 @@ const Game = () => {
             });
         });
     }
+
+    const getNamesCurrentTurn = () => {
+        return (
+            <span className="game-dice-current">
+                {currentTeam ? currentTeam.players[0] : null}
+                {currentTeam ? currentTeam.players.length > 2 ? ", " : currentTeam.players.length > 1 ? " en " : null : null}
+                {currentTeam ? currentTeam.players.map((player: string, i: number) => {
+                    if (currentTeam.players.length === 2 && (i !== 0)) {
+                        return player;
+                    } else {
+                        if (i < (currentTeam.players.length - 1) && (i !== 0)) {
+                            return player + ", ";
+                        } else if (i === (currentTeam.players.length - 1) && i !== 0) {
+                            return player;
+                        }
+                    }
+                }) : null}
+                {currentTeam ? currentTeam.players.length > 1 ? " zijn aan de beurt!" : currentTeam.players.length === 1 ? " is aan de beurt" : null : null}
+            </span>
+        );
+    }
     
     return (
         <div className="game">
@@ -79,7 +100,7 @@ const Game = () => {
             {(gameStage === 1) && currentTeam ?
                 <div className="game-dice">
                     <h2 className="game-dice-title">Gooi de dobbelsteen!</h2>
-                    {currentTeam ? currentTeam.players.map((player: string, i: number) => {return player}) : null}
+                    {getNamesCurrentTurn()}
                     <Dice onDiceRolled={(value: number) => doneDiceRoll(value)} maxDice={3} />
                 </div> : null}
             {gameStage === 2 ?
@@ -89,28 +110,55 @@ const Game = () => {
                         {diceValue}
                     </div>
                     <br/>
-                    <h2 className="game-countdown-title">Ready?</h2>
+                    <h2 className="game-countdown-title">Klaar?</h2>
                     <Countdown doneCountdown={() => doneCountdown()} />
                 </div> : null}
             {gameStage === 3 ?
                 <div>
                     <Timer doneTimer={() => doneTimer()}/>
                     <div className="game-words">
-                        <div className="game-words-dice">
-                            {diceValue}
+                        <div className="game-words-dice-wrapper">
+                            <h2 className="game-words-title">Je gooide:</h2>
+                            <div className="game-words-dice">
+                                {diceValue}
+                            </div>
                         </div>
+                        <hr className="game-words-hr"/>
                         <Words getCorrectWords={(amount: number) => {
                             setCorrectWords(amount);
                         }}/>
-                        Words Correct: {correctWords} Total: {correctWords - (diceValue !== undefined ? diceValue : 0)}
+                        <hr className="game-words-hr"/>
+                        <div>
+                            Totaal punten: {correctWords - (diceValue !== undefined ? diceValue : 0)}
+                        </div>
                     </div>
                 </div> : null}
             {gameStage === 4 ?
-                <div>
-                    {teams.map((team, i) => {
-                        return <p key={i}>Team van {team.players[0]}: {team.points}</p>
-                    })}
-                    <button onClick={() => setNextTeam()}>Next round</button>
+                <div className="game-results">
+                    <h2 className="game-results-title">Puntentotaal</h2>
+                    <table className="game-results-table">
+                        <tr>
+                            <th>
+                                Team van
+                            </th>
+                            <th>
+                                Punten
+                            </th>
+                        </tr>
+                        {teams.map((team, i) => {
+                            return (
+                                <tr key={i}>
+                                    <td>
+                                        {team.players[0]}
+                                    </td>
+                                    <td>
+                                        {team.points}
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                    </table>
+                    <button onClick={() => setNextTeam()} className="button-style-inverted">Next round</button>
                 </div>: null}
         </div>
     );

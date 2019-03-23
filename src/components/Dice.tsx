@@ -14,7 +14,7 @@ const Dice = ({maxDice, onDiceRolled}: Props) => {
     return (
         <div>
             <button onClick={() => rollDice(maxDice)} className="button-style">
-                Roll dice!
+                Gooi dobbelsteen!
             </button>
         </div>
     );

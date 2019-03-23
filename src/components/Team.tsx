@@ -102,15 +102,15 @@ const Team = (props: any) => {
                                 })}
                             </div> : null}
                             <form onSubmit={(event) => handleSubmit(event, teamIndex)} className="team-card-actions">
-                                <input disabled={team.players.length === 8 ? true : false} value={inputs[teamIndex]} onChange={(event) => handleChange(event, teamIndex)} placeholder={"Name player " + (team.players.length + 1)} className="team-card-actions-input"/>
+                                <input disabled={team.players.length === 8 ? true : false} value={inputs[teamIndex]} onChange={(event) => handleChange(event, teamIndex)} placeholder={"Naam speler " + (team.players.length + 1)} className="team-card-actions-input"/>
                                 <button disabled={team.players.length === 8 ? true : false} onClick={() => addPlayer(teamIndex)} className="team-card-actions-button"><AddPlayerIcon/></button>
                             </form>
                         </div>
                     );
                 })}
             </div>
-                <button onClick={() => addTeam()} disabled={teams.length === 6 ? true : false} className="button-style">Add team</button>
-                <button onClick={() => handleStartGame()} disabled={1==1 ? false : true} className="button-style">Start Game</button>
+                <button onClick={() => addTeam()} disabled={teams.length === 6 ? true : false} className="button-style">Team toevoegen</button>
+                <button onClick={() => handleStartGame()} disabled={1==1 ? false : true} className="button-style">Start Spel!</button>
         </div>
     );
 }
