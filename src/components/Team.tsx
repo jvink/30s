@@ -85,19 +85,19 @@ const Team = (props: any) => {
                             <h2 className="team-card-header-title">Team {teamIndex + 1}</h2>
                             <button onClick={() => removeTeam(teamIndex)} className="team-card-header-button">X</button>
                         </div>
-                        {team.players.length > 0 ? <ul>
+                        {team.players.length > 0 ? <div>
                             {team.players.map((player, playerIndex) => {
                                 return (
-                                    <li key={playerIndex}>
+                                    <div key={playerIndex} className="team-card-content-player">
                                         {player}
-                                        <button onClick={() => removePlayer(teamIndex, playerIndex)} className="team-card-header-button"><DeleteIcon/></button>
-                                    </li>
+                                        <button onClick={() => removePlayer(teamIndex, playerIndex)} className="team-card-content-player-button"><DeleteIcon/></button>
+                                    </div>
                                 );
                             })}
-                        </ul> : null}
-                        <form onSubmit={(event) => handleSubmit(event, teamIndex)} className="team-card-content">
-                            <input value={inputs[teamIndex]} onChange={(event) => handleChange(event, teamIndex)} placeholder={"Name player " + (team.players.length + 1)} className="team-card-content-input"/>
-                            <button onClick={() => addPlayer(teamIndex)} className="team-card-content-button">+</button>
+                        </div> : null}
+                        <form onSubmit={(event) => handleSubmit(event, teamIndex)} className="team-card-actions">
+                            <input value={inputs[teamIndex]} onChange={(event) => handleChange(event, teamIndex)} placeholder={"Name player " + (team.players.length + 1)} className="team-card-actions-input"/>
+                            <button onClick={() => addPlayer(teamIndex)} className="team-card-actions-button">+</button>
                         </form>
                     </div>
                 );

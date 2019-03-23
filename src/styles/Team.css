@@ -7,6 +7,8 @@
     flex-direction: column;
 }
 
+/* Header */
+
 .team-card-header {
     display: flex;
 }
@@ -25,21 +27,44 @@
     margin-left: auto;
 }
 
-.team-card-content {
+/* Content */
+
+.team-card-content-player {
+    display: flex;
+}
+
+.team-card-content-player-button {
+    visibility: hidden;
+    font-family: 'Sniglet', cursive;
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    float: right;
+    background-color: #e84118;
+}
+
+.team-card-content-player:hover .team-card-content-player-button {
+    visibility: visible;
+}
+
+/* Actions */
+
+.team-card-actions {
     display: flex;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 10px;
 }
 
-.team-card-content-input {
+.team-card-actions-input {
     font-family: 'Sniglet', cursive;
     border: none;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     padding: 1em;
+    margin-top: 1em;
 }
 
-.team-card-content-button {
+.team-card-actions-button {
     font-family: 'Sniglet', cursive;
     background-color: #f5f6fa;
     border: none;
