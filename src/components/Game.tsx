@@ -70,28 +70,40 @@ const Game = () => {
     }
     
     return (
-        <div>
+        <div className="game">
             {gameStage === 0 ? 
             <div>
                 <h2 className="game-teams-title">Stel de teams samen!</h2>
                 <Team onTeamsCreated={(createdTeams: Array<ITeam>) => doneTeam(createdTeams)}/>
             </div> : null}
             {(gameStage === 1) && currentTeam ?
-                <div>
+                <div className="game-dice">
+                    <h2 className="game-dice-title">Gooi de dobbelsteen!</h2>
                     {currentTeam ? currentTeam.players.map((player: string, i: number) => {return player}) : null}
                     <Dice onDiceRolled={(value: number) => doneDiceRoll(value)} maxDice={3} />
                 </div> : null}
             {gameStage === 2 ?
-                <div>
+                <div className="game-countdown">
+                    <h2 className="game-countdown-title">Je gooide:</h2>
+                    <div className="game-countdown-dice">
+                        {diceValue}
+                    </div>
+                    <br/>
+                    <h2 className="game-countdown-title">Ready?</h2>
                     <Countdown doneCountdown={() => doneCountdown()} />
                 </div> : null}
             {gameStage === 3 ?
                 <div>
-                    Dice: {diceValue} Words Correct: {correctWords} Total: {correctWords - (diceValue !== undefined ? diceValue : 0)}
                     <Timer doneTimer={() => doneTimer()}/>
-                    <Words getCorrectWords={(amount: number) => {
-                        setCorrectWords(amount);
-                    }}/>
+                    <div className="game-words">
+                        <div className="game-words-dice">
+                            {diceValue}
+                        </div>
+                        <Words getCorrectWords={(amount: number) => {
+                            setCorrectWords(amount);
+                        }}/>
+                        Words Correct: {correctWords} Total: {correctWords - (diceValue !== undefined ? diceValue : 0)}
+                    </div>
                 </div> : null}
             {gameStage === 4 ?
                 <div>

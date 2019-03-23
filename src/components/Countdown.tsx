@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/Countdown.scss';
 
 type Props = {
     doneCountdown: () => void;
@@ -14,8 +15,10 @@ const Countdown = ({doneCountdown}: Props) => {
     countdownToStart();
 
     return (
-        <div>
-            {countdownValue}
+        <div className="circle-c center-c">
+            <div className="count-c">{countdownValue}</div>
+            <div className="l-half-c"></div>
+            <div className="r-half-c"></div>
         </div>
     );
 }

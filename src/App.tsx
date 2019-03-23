@@ -13,12 +13,7 @@ const setRandomBackGroundColor = ():void => {
 setRandomBackGroundColor();
 
 const App = () => {
-  
-  return (
-    <div className="game-wrapper">
-      <Game/>
-    </div>
-  );
+  return <Game/>;
 }
 
 export default App;

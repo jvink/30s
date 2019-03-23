@@ -1,6 +1,9 @@
-body {
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
+  height: 100%;
   font-family: 'Sniglet', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

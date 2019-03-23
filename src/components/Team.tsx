@@ -7,7 +7,7 @@ import '../styles/Team.css';
 const Team = (props: any) => {
     const initialState = [{players: [], points: 0}, {players: [], points: 0}]
     const [teams, setTeams] = useState<Array<ITeam>>(initialState);
-    const [inputs, setInputs] = useState<Array<string>>(['']);
+    const [inputs, setInputs] = useState<Array<string>>(['', '']);
 
     const addPlayer = (teamIndex: number): void => {
         setTeams(prevTeams => {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import dutchWords from '../nl.json';
+import '../styles/Words.css';
 
 interface Props {
     getCorrectWords: (amount: number) => void
@@ -27,15 +28,15 @@ const Words = (props: Props) => {
     }, []);
 
     return (
-        <form>
+        <form className="words">
             {words.map((word, index) => {
                 return (
-                    <span key={index}>
+                    <label key={index} className="container">{word}
                         <input type="checkbox" name={word} value={word} onChange={() => {
                             props.getCorrectWords(document.querySelectorAll('input[type="checkbox"]:checked').length);
                         }}/>
-                        {word}
-                    </span>
+                        <span className="checkmark"></span>
+                    </label>
                 );
             })}
         </form>
