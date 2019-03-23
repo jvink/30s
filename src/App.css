@@ -2,4 +2,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #353b48;
+}
+
+.button-style {
+    font-family: 'Sniglet', cursive;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: transparent;
+    border: 1px solid #f5f6fa;
+    color: #f5f6fa;
+    margin: 1em;
+    padding: 1em;
+    font-size: 1em;
+    border-radius: 8px;
+    outline: none;
+}
+
+.button-style:hover {
+    background-color: #f5f6fa;
+    border: 1px solid #f5f6fa;
+    color: #353b48;
+    cursor: pointer;
 }

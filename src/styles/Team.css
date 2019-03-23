@@ -1,8 +1,13 @@
+.teams-wrapper {
+    display: flex;
+}
+
 .team-card {
     background-color: #f5f6fa;
-    padding: 1em;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 2em;
     margin: 1em;
-    border-radius: 4px;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
 }
@@ -11,6 +16,7 @@
 
 .team-card-header {
     display: flex;
+    margin-bottom: 1em;
 }
 
 .team-card-header-title {
@@ -31,27 +37,27 @@
 
 .team-card-content-player {
     display: flex;
+    margin: 1em;
 }
 
 .team-card-content-player-button {
     visibility: hidden;
     font-family: 'Sniglet', cursive;
+    background-color: transparent;
     border: none;
-    border-radius: 100%;
-    cursor: pointer;
-    float: right;
-    background-color: #e84118;
+    margin-left: auto;
 }
 
 .team-card-content-player:hover .team-card-content-player-button {
     visibility: visible;
+    cursor: pointer;
 }
 
 /* Actions */
 
 .team-card-actions {
     display: flex;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px 1px rgba(0,0,0,0.1);
     border-radius: 10px;
 }
 
@@ -61,7 +67,7 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     padding: 1em;
-    margin-top: 1em;
+    outline: none;
 }
 
 .team-card-actions-button {
@@ -72,4 +78,5 @@
     border-bottom-right-radius: 10px;
     cursor: pointer;
     flex: 1;
+    color: #7f8fa6;
 }

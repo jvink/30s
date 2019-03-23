@@ -5,6 +5,7 @@ import Dice from './Dice';
 import Words from './Words';
 import Countdown from './Countdown';
 import Timer from './Timer';
+import '../styles/Game.css';
 
 const Game = () => {
     const [teams, setTeams] = useState<Array<ITeam>>([]);
@@ -70,13 +71,20 @@ const Game = () => {
     
     return (
         <div>
-            {gameStage === 0 ? <Team onTeamsCreated={(createdTeams: Array<ITeam>) => doneTeam(createdTeams)}/> : null}
+            {gameStage === 0 ? 
+            <div>
+                <h2 className="game-teams-title">Stel de teams samen!</h2>
+                <Team onTeamsCreated={(createdTeams: Array<ITeam>) => doneTeam(createdTeams)}/>
+            </div> : null}
             {(gameStage === 1) && currentTeam ?
                 <div>
                     {currentTeam ? currentTeam.players.map((player: string, i: number) => {return player}) : null}
                     <Dice onDiceRolled={(value: number) => doneDiceRoll(value)} maxDice={3} />
                 </div> : null}
-            {gameStage === 2 ? <Countdown doneCountdown={() => doneCountdown()} /> : null}
+            {gameStage === 2 ?
+                <div>
+                    <Countdown doneCountdown={() => doneCountdown()} />
+                </div> : null}
             {gameStage === 3 ?
                 <div>
                     Dice: {diceValue} Words Correct: {correctWords} Total: {correctWords - (diceValue !== undefined ? diceValue : 0)}
