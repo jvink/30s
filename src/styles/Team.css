@@ -80,3 +80,7 @@
     flex: 1;
     color: #7f8fa6;
 }
+
+.team-card-actions-button:disabled {
+    cursor: not-allowed;
+}

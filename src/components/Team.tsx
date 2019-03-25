@@ -10,15 +10,18 @@ const Team = (props: any) => {
     const [inputs, setInputs] = useState<Array<string>>(['', '']);
 
     const addPlayer = (teamIndex: number): void => {
-        setTeams(prevTeams => {
-            return prevTeams.map((team, idx) => {
-                if (teamIndex === idx) {
-                    return {...prevTeams[teamIndex], players: [...prevTeams[teamIndex].players, inputs[teamIndex]]};
-                } else {
-                    return team;
-                }
+        if (inputs[teamIndex] === "") {
+        } else {
+            setTeams(prevTeams => {
+                return prevTeams.map((team, idx) => {
+                    if (teamIndex === idx) {
+                        return {...prevTeams[teamIndex], players: [...prevTeams[teamIndex].players, inputs[teamIndex]]};
+                    } else {
+                        return team;
+                    }
+                });
             });
-        });
+        }
     }
 
     const removePlayer = (teamIndex: number, playerIndex: number): void => {
@@ -71,14 +74,31 @@ const Team = (props: any) => {
     const handleChange = (e: any, i: number): void => {
         setInputs(
             inputs.map((v:any, j: number) => {
-                if (j===i)
-                return v = e.target.value;
+                if (j===i) {
+                    return v = e.target.value;
+                }
             })
         );
     }
 
     const handleStartGame = (): any => {
-        props.onTeamsCreated(teams);
+        let valid = false;
+        for (let i = 0; i < teams.length; i++) {
+            const team = teams[i];
+            if (team.players.length < 2) {
+                valid = false;
+                alert('Team ' + (i + 1) +' moet minimaal uit 2 spelers bestaan!');
+            } else {
+                valid = true;
+                if (i === teams.length - 1) {
+                    if (valid) {
+                        props.onTeamsCreated(teams);
+                    } else {
+                        alert('Teams ongeldig!');
+                    }
+                }
+            }
+        }
     }
 
     return (
@@ -101,8 +121,8 @@ const Team = (props: any) => {
                                     );
                                 })}
                             </div> : null}
-                            <form onSubmit={(event) => handleSubmit(event, teamIndex)} className="team-card-actions">
-                                <input disabled={team.players.length === 8 ? true : false} value={inputs[teamIndex]} onChange={(event) => handleChange(event, teamIndex)} placeholder={"Naam speler " + (team.players.length + 1)} className="team-card-actions-input"/>
+                            <form onSubmit={(event) => handleSubmit(event, teamIndex)} className="team-card-actions" autoComplete="off">
+                                <input disabled={team.players.length === 8 ? true : false} value={inputs[teamIndex]} onChange={(event) => handleChange(event, teamIndex)} placeholder={"Naam speler " + (team.players.length + 1)} className="team-card-actions-input" id={inputs[teamIndex] === "" ? "error" : ""}/>
                                 <button disabled={team.players.length === 8 ? true : false} onClick={() => addPlayer(teamIndex)} className="team-card-actions-button"><AddPlayerIcon/></button>
                             </form>
                         </div>
@@ -110,7 +130,7 @@ const Team = (props: any) => {
                 })}
             </div>
                 <button onClick={() => addTeam()} disabled={teams.length === 6 ? true : false} className="button-style">Team toevoegen</button>
-                <button onClick={() => handleStartGame()} disabled={1==1 ? false : true} className="button-style">Start Spel!</button>
+                <button onClick={() => handleStartGame()} disabled={teams.length < 2 ? true : false} className="button-style">Start Spel!</button>
         </div>
     );
 }

@@ -18,6 +18,13 @@
     color: #353b48;
 }
 
+.button-style:disabled {
+    background-color: #cfcfcf;
+    border: 1px solid #f5f6fa;
+    color: #353b48;
+    cursor: not-allowed;
+}
+
 .button-style-inverted {
     font-family: 'Sniglet', cursive;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
