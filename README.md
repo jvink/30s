@@ -1,8 +1,5 @@
 TODO:
 
-- Keep track of which person of the team is next
-- Scrolling horizontally
-- Timer checken (tijd loopt niet overeen met animatie)
 - Score tabel style verbeteren
 - Cards vergroten
 - Gooi dobbelsteen page wat mooier maken
@@ -15,3 +12,7 @@ TODO:
 - React notificaties ipv javascript alerts
 - Cross-platform testen
 - Mobile responsive maken
+- Bug oplossen
+- Scrollbar mooier
+- Disabled buttons mooier
+- Timer checken (tijd loopt niet overeen met animatie)

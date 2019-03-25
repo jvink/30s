@@ -1,5 +1,6 @@
 .teams-wrapper {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .team-card {

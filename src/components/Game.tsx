@@ -61,7 +61,11 @@ const Game = () => {
         setTeams(prevTeams => {
             return prevTeams.map((team, tidx) => {
                 if((teamIndex === tidx) && diceValue !== undefined) {
-                    return {...prevTeams[teamIndex], points: prevTeams[teamIndex].points + (correctWords - diceValue)};
+                    if (team.currentPlayer === team.players.length - 1) {
+                        return {...prevTeams[teamIndex], points: prevTeams[teamIndex].points + (correctWords - diceValue), currentPlayer: 0};
+                    } else {
+                        return {...prevTeams[teamIndex], points: prevTeams[teamIndex].points + (correctWords - diceValue), currentPlayer: prevTeams[teamIndex].currentPlayer + 1};
+                    }
                 } else {
                     return team;
                 }
@@ -71,40 +75,50 @@ const Game = () => {
 
     const getNamesCurrentTurn = () => {
         return (
-            <span className="game-dice-current">
-                {currentTeam ? currentTeam.players[0] : null}
-                {currentTeam ? currentTeam.players.length > 2 ? ", " : currentTeam.players.length > 1 ? " en " : null : null}
-                {currentTeam ? currentTeam.players.map((player: string, i: number) => {
-                    if (currentTeam.players.length === 2 && (i !== 0)) {
-                        return player;
-                    } else {
-                        if (i < (currentTeam.players.length - 1) && (i !== 0)) {
-                            return player + ", ";
-                        } else if (i === (currentTeam.players.length - 1) && i !== 0) {
-                            return player;
-                        }
-                    }
-                }) : null}
-                {currentTeam ? currentTeam.players.length > 1 ? " zijn aan de beurt!" : currentTeam.players.length === 1 ? " is aan de beurt" : null : null}
+            <span className="game-current">
+                {currentTeam ? <h2>{"Team " + ((teams.findIndex((team) => team === currentTeam)) + 1)}</h2>: null}
+                {currentTeam ? currentTeam.players[currentTeam.currentPlayer] + " is aan de beurt" : null}
             </span>
         );
+    }
+
+    const getTeamsSortedByPoints = () => {
+        var sortedTeams = teams.slice(0);
+        //https://stackoverflow.com/questions/1069666/sorting-javascript-object-by-property-value
+        sortedTeams.sort((team1, team2) => {
+            return team2.points - team1.points;
+        });
+
+        sortedTeams.map((team, i) => {
+            return (
+                <tr key={i} className="game-results-table-row">
+                    <td>
+                        {team.players[0]}
+                    </td>
+                    <td>
+                        {team.points}
+                    </td>
+                </tr>
+            );
+        });
     }
     
     return (
         <div className="game">
             {gameStage === 0 ? 
-            <div>
+            <div style={{display: 'flex', flexDirection: 'column', flexWrap: 'wrap'}}>
                 <h2 className="game-teams-title">Stel de teams samen!</h2>
                 <Team onTeamsCreated={(createdTeams: Array<ITeam>) => doneTeam(createdTeams)}/>
             </div> : null}
             {(gameStage === 1) && currentTeam ?
                 <div className="game-dice">
-                    <h2 className="game-dice-title">Gooi de dobbelsteen!</h2>
                     {getNamesCurrentTurn()}
+                    <h2 className="game-dice-title">Gooi de dobbelsteen!</h2>
                     <Dice onDiceRolled={(value: number) => doneDiceRoll(value)} maxDice={3} />
                 </div> : null}
             {gameStage === 2 ?
                 <div className="game-countdown">
+                    {getNamesCurrentTurn()}
                     <h2 className="game-countdown-title">Je gooide:</h2>
                     <div className="game-countdown-dice">
                         {diceValue}
@@ -117,6 +131,7 @@ const Game = () => {
                 <div>
                     <Timer doneTimer={() => doneTimer()}/>
                     <div className="game-words">
+                        {getNamesCurrentTurn()}
                         <div className="game-words-dice-wrapper">
                             <h2 className="game-words-title">Je gooide:</h2>
                             <div className="game-words-dice">
@@ -145,18 +160,7 @@ const Game = () => {
                                 Punten
                             </th>
                         </tr>
-                        {teams.map((team, i) => {
-                            return (
-                                <tr key={i}>
-                                    <td>
-                                        {team.players[0]}
-                                    </td>
-                                    <td>
-                                        {team.points}
-                                    </td>
-                                </tr>
-                            );
-                        })}
+                        {getTeamsSortedByPoints()}
                     </table>
                     <button onClick={() => setNextTeam()} className="button-style-inverted">Next round</button>
                 </div>: null}

@@ -18,8 +18,12 @@
     color: #f5f6fa;
 }
 
-.game-dice-current {
+.game-current {
+    position: absolute;
+    right: 6em;
+    top: 3em;
     color: #f5f6fa;
+    text-align: center;
 }
 
 .game-countdown {
@@ -100,16 +104,16 @@
 
 .game-results-table {
     border-collapse: collapse;
-    border: 1px solid #2f3640;
+    border-radius: 1em;
+    overflow: hidden;
     margin-bottom: 1em;
 }
 
 .game-results-table-row:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #ececec;
 }
 
 td, th {
-    border: 1px solid #2f3640;
     padding: .5em;
     text-align: center;
 }

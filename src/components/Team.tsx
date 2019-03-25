@@ -5,7 +5,7 @@ import DeleteIcon from 'mdi-react/DeleteIcon';
 import '../styles/Team.css';
 
 const Team = (props: any) => {
-    const initialState = [{players: [], points: 0}, {players: [], points: 0}]
+    const initialState = [{players: [], points: 0, currentPlayer: 0}, {players: [], points: 0, currentPlayer: 0}]
     const [teams, setTeams] = useState<Array<ITeam>>(initialState);
     const [inputs, setInputs] = useState<Array<string>>(['', '']);
 
@@ -47,7 +47,7 @@ const Team = (props: any) => {
         if (teams.length < 7) {
             setInputs(inputs.concat(''));
             setTeams(prevTeams => {
-                return prevTeams.concat({players: [], points: 0});
+                return prevTeams.concat({players: [], points: 0, currentPlayer: 0});
             });
         } else {
             alert('U mag maar 6 teams max');
