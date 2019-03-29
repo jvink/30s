@@ -18,6 +18,22 @@
     color: #f5f6fa;
 }
 
+.game-dice-button {
+    background-color: #ffffff;
+    border: 2px solid #2f3640;
+    border-radius: 4px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-top: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
 .game-current {
     position: absolute;
     right: 6em;
@@ -46,16 +62,30 @@
     font-size: 48px;
     margin-left: auto;
     margin-right: auto;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+.dice-grow {
+    animation-name: dice-grow-animation;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
 }
 
 .game-words {
     background-color: #f5f6fa;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    padding: 2em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 3em;
     margin: 1em;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    min-width: 350px;
 }
 
 .game-words-dice-wrapper {
@@ -86,14 +116,26 @@
     border: 1px solid #2f3640;
 }
 
+.game-words-result {
+    margin-top: 1em;
+    font-size: 1.2em;
+}
+
+.game-words-result-value {
+    font-weight: bold;
+    font-size: 1.25em;
+    margin-left: .5em;
+}
+
 .game-results {
     background-color: #f5f6fa;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 2em;
     margin: 1em;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    min-width: 350px;
 }
 
 .game-results-title {
@@ -116,4 +158,13 @@
 td, th {
     padding: .5em;
     text-align: center;
+}
+
+@keyframes dice-grow-animation {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.3);
+    }
 }

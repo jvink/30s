@@ -5,6 +5,7 @@ import Dice from './Dice';
 import Words from './Words';
 import Countdown from './Countdown';
 import Timer from './Timer';
+import TrophyIcon from 'mdi-react/TrophyIcon';
 import '../styles/Game.css';
 
 const Game = () => {
@@ -84,14 +85,18 @@ const Game = () => {
 
     const getTeamsSortedByPoints = () => {
         var sortedTeams = teams.slice(0);
-        //https://stackoverflow.com/questions/1069666/sorting-javascript-object-by-property-value
         sortedTeams.sort((team1, team2) => {
             return team2.points - team1.points;
         });
 
-        sortedTeams.map((team, i) => {
+        return sortedTeams.map((team, i) => {
             return (
                 <tr key={i} className="game-results-table-row">
+                    <td>
+                        {i === 0 ? <TrophyIcon color="#e1b12c"/> : null}
+                        {i === 1 ? <TrophyIcon color="#dcdde1"/> : null}
+                        {i === 2 ? <TrophyIcon color="#e67e22"/> : null}
+                    </td>
                     <td>
                         {team.players[0]}
                     </td>
@@ -143,8 +148,8 @@ const Game = () => {
                             setCorrectWords(amount);
                         }}/>
                         <hr className="game-words-hr"/>
-                        <div>
-                            Totaal punten: {correctWords - (diceValue !== undefined ? diceValue : 0)}
+                        <div className="game-words-result">
+                            Totaal punten: <span className="game-words-result-value">{correctWords - (diceValue !== undefined ? diceValue : 0)}</span>
                         </div>
                     </div>
                 </div> : null}
@@ -152,15 +157,18 @@ const Game = () => {
                 <div className="game-results">
                     <h2 className="game-results-title">Puntentotaal</h2>
                     <table className="game-results-table">
-                        <tr>
-                            <th>
-                                Team van
-                            </th>
-                            <th>
-                                Punten
-                            </th>
-                        </tr>
-                        {getTeamsSortedByPoints()}
+                        <tbody>
+                            <tr>
+                                <th></th>
+                                <th>
+                                    Team van
+                                </th>
+                                <th>
+                                    Punten
+                                </th>
+                            </tr>
+                            {getTeamsSortedByPoints()}
+                        </tbody>
                     </table>
                     <button onClick={() => setNextTeam()} className="button-style-inverted">Next round</button>
                 </div>: null}

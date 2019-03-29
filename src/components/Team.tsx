@@ -5,7 +5,7 @@ import DeleteIcon from 'mdi-react/DeleteIcon';
 import '../styles/Team.css';
 
 const Team = (props: any) => {
-    const initialState = [{players: [], points: 0, currentPlayer: 0}, {players: [], points: 0, currentPlayer: 0}]
+    const initialState = [{players: ["Freek Vonk", "Mark Rutte"], points: 22, currentPlayer: 0}, {players: ["Geert Wilders", "Willem Alexander"], points: 10, currentPlayer: 0}, {players: ["Klaas Dijkhof", "Willen van Oranje"], points: 12, currentPlayer: 0}]
     const [teams, setTeams] = useState<Array<ITeam>>(initialState);
     const [inputs, setInputs] = useState<Array<string>>(['', '']);
 

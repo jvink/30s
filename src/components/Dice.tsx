@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Game.css';
 
 type Props = {
     maxDice: number;
@@ -13,8 +14,8 @@ const Dice = ({maxDice, onDiceRolled}: Props) => {
 
     return (
         <div>
-            <button onClick={() => rollDice(maxDice)} className="button-style">
-                Gooi dobbelsteen!
+            <button onClick={() => rollDice(maxDice)} className="game-dice-button dice-grow">
+                ?
             </button>
         </div>
     );

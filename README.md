@@ -1,8 +1,5 @@
 TODO:
 
-- Score tabel style verbeteren
-- Cards vergroten
-- Gooi dobbelsteen page wat mooier maken
 - Teams maken polishen
 - Einde spel maken (50 punten?)
 - Teams opslaan in cookies
