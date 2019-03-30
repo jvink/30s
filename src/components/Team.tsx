@@ -5,17 +5,26 @@ import DeleteIcon from 'mdi-react/DeleteIcon';
 import '../styles/Team.css';
 
 const Team = (props: any) => {
-    const initialState = [{players: ["Freek Vonk", "Mark Rutte"], points: 22, currentPlayer: 0}, {players: ["Geert Wilders", "Willem Alexander"], points: 10, currentPlayer: 0}, {players: ["Klaas Dijkhof", "Willen van Oranje"], points: 12, currentPlayer: 0}]
+    const initialState = [{players: [], points: 0, currentPlayer: 0}, {players: [], points: 0, currentPlayer: 0}]
     const [teams, setTeams] = useState<Array<ITeam>>(initialState);
-    const [inputs, setInputs] = useState<Array<string>>(['', '', '']);
+    const [inputs, setInputs] = useState<Array<string>>(['', '']);
+    const [winPoints, setWinPoints] = useState<number>(50);
 
     const addPlayer = (teamIndex: number): void => {
-        if (inputs[teamIndex] === "") {
+        if (inputs[teamIndex])
+        if (inputs[teamIndex].trim() === "") {
         } else {
             setTeams(prevTeams => {
                 return prevTeams.map((team, idx) => {
                     if (teamIndex === idx) {
-                        return {...prevTeams[teamIndex], players: [...prevTeams[teamIndex].players, inputs[teamIndex]]};
+                        let double = false;
+                        team.players.map((player) => {
+                            if (player === inputs[teamIndex]) {
+                                double = true;
+                                alert('Spelers mogen niet dezelfde naam hebben!');
+                            };
+                        });
+                        return double ? {...prevTeams[teamIndex]} : {...prevTeams[teamIndex], players: [...prevTeams[teamIndex].players, inputs[teamIndex]]};
                     } else {
                         return team;
                     }
@@ -81,6 +90,13 @@ const Team = (props: any) => {
         );
     }
 
+    const handleChangeWinPoints = (e: any): void => {
+        let value = parseInt(e.target.value);
+        if (!(value < 0)) {
+            setWinPoints(value);
+        }
+    }
+
     const handleStartGame = (): any => {
         let valid = false;
         for (let i = 0; i < teams.length; i++) {
@@ -92,7 +108,7 @@ const Team = (props: any) => {
                 valid = true;
                 if (i === teams.length - 1) {
                     if (valid) {
-                        props.onTeamsCreated(teams);
+                        props.onTeamsCreated(teams, winPoints);
                     } else {
                         alert('Teams ongeldig!');
                     }
@@ -116,7 +132,7 @@ const Team = (props: any) => {
                                     return (
                                         <div key={playerIndex} className="team-card-content-player">
                                             <span>{playerIndex + 1}. {player}</span>
-                                            <button onClick={() => removePlayer(teamIndex, playerIndex)} className="team-card-content-player-button"><DeleteIcon size={20}/></button>
+                                            <button onClick={() => removePlayer(teamIndex, playerIndex)} className="team-card-content-player-button"><DeleteIcon size={20} color="#2f3640"/></button>
                                         </div>
                                     );
                                 })}
@@ -129,6 +145,7 @@ const Team = (props: any) => {
                     );
                 })}
             </div>
+                <div className="win"><span>Het team dat als eerste </span><input value={winPoints} onChange={(e) => handleChangeWinPoints(e)} type="number" className="win-points"></input><span> punten haalt, wint!</span></div>
                 <button onClick={() => addTeam()} disabled={teams.length === 6 ? true : false} className="button-style">Team toevoegen</button>
                 <button onClick={() => handleStartGame()} disabled={teams.length < 2 ? true : false} className="button-style">Start Spel!</button>
         </div>

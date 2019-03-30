@@ -58,6 +58,7 @@
 
 .team-card-actions {
     display: flex;
+    margin-top: auto;
     box-shadow: 0 4px 10px 1px rgba(0,0,0,0.1);
     border-radius: 10px;
 }
@@ -84,4 +85,24 @@
 
 .team-card-actions-button:disabled {
     cursor: not-allowed;
+}
+
+.win {
+    display: flex;
+    color: #f5f6fa;
+    margin: 1em;
+    align-items: center;
+}
+
+.win-points {
+    font-family: 'Sniglet', cursive;
+    box-shadow: 0 4px 10px 1px rgba(0,0,0,0.1);
+    color: #2f3640;
+    border: none;
+    border-radius: 10px;
+    padding: .5em;
+    margin-left: .5em;
+    margin-right: .5em;
+    outline: none;
+    max-width: 40px;
 }
