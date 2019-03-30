@@ -1,6 +1,5 @@
 TODO:
 
-- Team 3+ kan geen nieuwe mensen toevoegen
 - Teams maken polishen
 - Einde spel maken (50 punten?)
 - Teams opslaan in cookies

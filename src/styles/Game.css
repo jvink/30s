@@ -145,14 +145,15 @@
 }
 
 .game-results-table {
-    border-collapse: collapse;
-    border-radius: 1em;
-    overflow: hidden;
     margin-bottom: 1em;
+    border-collapse: collapse;
+    border: 1px solid #2f3640;
+    background-color: #ececec;
 }
 
 .game-results-table-row:nth-child(even) {
-    background-color: #ececec;
+    background-color: #f5f6fa;
+    border: 1px solid #2f3640;
 }
 
 td, th {

@@ -94,8 +94,8 @@ const Game = () => {
                 <tr key={i} className="game-results-table-row">
                     <td>
                         {i === 0 ? <TrophyIcon color="#e1b12c"/> : null}
-                        {i === 1 ? <TrophyIcon color="#dcdde1"/> : null}
-                        {i === 2 ? <TrophyIcon color="#e67e22"/> : null}
+                        {i === 1 ? <TrophyIcon color="#bdc3c7"/> : null}
+                        {i === 2 ? <TrophyIcon color="#cd7f32"/> : null}
                     </td>
                     <td>
                         {team.players[0]}
