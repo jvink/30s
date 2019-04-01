@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ITeam from '../types/Types';
 import AddPlayerIcon from 'mdi-react/AccountPlusIcon';
 import DeleteIcon from 'mdi-react/DeleteIcon';
+import {ToastsContainer, ToastsStore, ToastsContainerPosition} from 'react-toasts';
 import '../styles/Team.css';
 
 const Team = (props: any) => {
@@ -21,7 +22,7 @@ const Team = (props: any) => {
                         team.players.map((player) => {
                             if (player === inputs[teamIndex]) {
                                 double = true;
-                                alert('Spelers mogen niet dezelfde naam hebben!');
+                                ToastsStore.error("Spelers mogen niet dezelfde naam hebben!");
                             };
                         });
                         return double ? {...prevTeams[teamIndex]} : {...prevTeams[teamIndex], players: [...prevTeams[teamIndex].players, inputs[teamIndex]]};
@@ -59,7 +60,7 @@ const Team = (props: any) => {
                 return prevTeams.concat({players: [], points: 0, currentPlayer: 0});
             });
         } else {
-            alert('U mag maar 6 teams max');
+            ToastsStore.error("U mag maximaal 6 teams!");
         }
     }
 
@@ -103,14 +104,14 @@ const Team = (props: any) => {
             const team = teams[i];
             if (team.players.length < 2) {
                 valid = false;
-                alert('Team ' + (i + 1) +' moet minimaal uit 2 spelers bestaan!');
+                ToastsStore.error("Team " + (i + 1) + " moet minimaal uit 2 spelers bestaan!");
             } else {
                 valid = true;
                 if (i === teams.length - 1) {
                     if (valid) {
                         props.onTeamsCreated(teams, winPoints);
                     } else {
-                        alert('Teams ongeldig!');
+                        ToastsStore.error("Ongeldige teams!");
                     }
                 }
             }
@@ -120,6 +121,7 @@ const Team = (props: any) => {
     return (
         <div>
             <div className="teams-wrapper">
+                <ToastsContainer position={ToastsContainerPosition.BOTTOM_CENTER} store={ToastsStore}/>
                 {teams.map((team, teamIndex) => {
                     return (
                         <div key={teamIndex} className="team-card">

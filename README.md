@@ -1,13 +1,11 @@
 TODO:
 
-- Einde spel maken (50 punten?)
-- Teams opslaan in cookies
-- Logo maken
 - Referentie naar mijn portfolio maken
 - Builden en deployen op github pages
-- React notificaties ipv javascript alerts
+- Logo maken
 - Cross-platform testen
 - Mobile responsive maken
+- Teams opslaan in cookies
 - Bug oplossen console
 - Scrollbar mooier
 - Disabled buttons mooier

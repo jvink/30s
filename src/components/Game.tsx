@@ -16,7 +16,7 @@ const Game = () => {
     const [gameStage, setGameStage] = useState<number>(0);
     const [correctWords, setCorrectWords] = useState<number>(0);
     const [winPointsValue, setWinPointsValue] = useState<number>();
-    const [gameOver, setGameOver] = useState<ITeam>({players: ['Klaas'], points: 20, currentPlayer: 0});
+    const [gameOver, setGameOver] = useState<ITeam>();
 
     const getRandomTeam = (): ITeam => {
         return teams[Math.floor(Math.random() * teams.length)];
@@ -185,9 +185,8 @@ const Game = () => {
                     <button onClick={() => setNextTeam()} className="button-style-inverted">Volgende ronde</button>
                 </div> : null}
             {gameOver ? 
-            <div>
-                <Win/>
-                Het team van {gameOver.players[0]} WINT!
+            <div className="game-win">
+                <Win team={gameOver}/>
             </div> : null}
         </div>
     );

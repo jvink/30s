@@ -1,5 +1,38 @@
 .balloons {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 300px;
+  max-height: 300px;
   position: absolute;
+  visibility: hidden;
+  -webkit-animation: celebration 4s normal ease-out;
+    animation: celebration 4s 1  normal ease-out;
+}
+
+.win-wrapper {
+  text-align: center;
+  color: #f5f6fa;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@-webkit-keyframes celebration {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+    top: -300px;
+  }
+}
+@keyframes celebration {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+    top: -300px;
+  }
 }

@@ -11,8 +11,10 @@
     "node-sass": "^4.11.0",
     "npm": "^6.9.0",
     "react": "^16.8.4",
+    "react-confetti": "^2.7.0",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
+    "react-toasts": "^3.0.1",
     "typescript": "3.3.3333"
   },
   "scripts": {
