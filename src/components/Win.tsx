@@ -8,11 +8,11 @@ import '../styles/Win.scss';
 
 const Win = () => {
     let a = [
-        <Balloon1 className="balloons" style={{top: (100*Math.random()) + "%", left: (100*Math.random()) + "%"}}/>,
-        <Balloon2 className="balloons" style={{top: (100*Math.random()) + "%", left: (100*Math.random()) + "%"}}/>,
-        <Balloon3 className="balloons" style={{top: (100*Math.random()) + "%", left: (100*Math.random()) + "%"}}/>,
-        <Balloon4 className="balloons" style={{top: (100*Math.random()) + "%", left: (100*Math.random()) + "%"}}/>,
-        <Balloon5 className="balloons" style={{top: (100*Math.random()) + "%", left: (100*Math.random()) + "%"}}/>
+        <Balloon2 className="balloons" style={{top: (75*Math.random()) + "%", left: (80*Math.random()) + "%"}}/>,
+        <Balloon1 className="balloons" style={{top: (75*Math.random()) + "%", left: (80*Math.random()) + "%"}}/>,
+        <Balloon3 className="balloons" style={{top: (75*Math.random()) + "%", left: (80*Math.random()) + "%"}}/>,
+        <Balloon4 className="balloons" style={{top: (75*Math.random()) + "%", left: (80*Math.random()) + "%"}}/>,
+        <Balloon5 className="balloons" style={{top: (75*Math.random()) + "%", left: (80*Math.random()) + "%"}}/>
     ];
 
     return (
