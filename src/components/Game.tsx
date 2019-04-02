@@ -5,9 +5,9 @@ import Dice from './Dice';
 import Words from './Words';
 import Countdown from './Countdown';
 import Timer from './Timer';
+import Win from './Win';
 import TrophyIcon from 'mdi-react/TrophyIcon';
 import '../styles/Game.scss';
-import Win from './Win';
 
 const Game = () => {
     const [teams, setTeams] = useState<Array<ITeam>>([]);
@@ -128,8 +128,8 @@ const Game = () => {
                 </div> : null}
             {(gameStage === 1 && !gameOver) && currentTeam ?
                 <div className="game-dice">
-                    {getNamesCurrentTurn()}
                     <h2 className="game-dice-title">Gooi de dobbelsteen!</h2>
+                    {getNamesCurrentTurn()}
                     <Dice onDiceRolled={(value: number) => doneDiceRoll(value)} maxDice={3} />
                 </div> : null}
             {gameStage === 2 && !gameOver ?
@@ -144,7 +144,7 @@ const Game = () => {
                     <Countdown doneCountdown={() => doneCountdown()} />
                 </div> : null}
             {gameStage === 3 && !gameOver ?
-                <div>
+                <div className="game-words-wrapper">
                     <Timer doneTimer={() => doneTimer()} />
                     <div className="game-words">
                         {getNamesCurrentTurn()}
@@ -184,10 +184,10 @@ const Game = () => {
                     </table>
                     <button onClick={() => setNextTeam()} className="button-style-inverted">Volgende ronde</button>
                 </div> : null}
-            {gameOver ? 
-            <div className="game-win">
-                <Win team={gameOver}/>
-            </div> : null}
+            {gameOver ?
+                <div className="game-win">
+                    <Win team={gameOver} />
+                </div> : null}
         </div>
     );
 };

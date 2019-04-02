@@ -22,7 +22,9 @@
 }
 
 .game-dice {
+  width: 100%;
   text-align: center;
+  margin-top: 2em;
 }
 
 .game-dice-title {
@@ -46,11 +48,14 @@
 }
 
 .game-current {
-  position: absolute;
-  right: 6em;
-  top: 3em;
   color: $color-text-primary;
   text-align: center;
+
+  @media screen and (min-width: 600px) {
+    position: absolute;
+    right: 6em;
+    top: 3em;
+  }
 }
 
 .game-countdown {
@@ -88,15 +93,24 @@
   animation-direction: alternate;
 }
 
+.game-words-wrapper {
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+}
+
 .game-words {
   background-color: $color-text-primary;
   box-shadow: 0 4px 8px 0 $color-card-box-shadow;
-  padding: 3em;
-  margin: 1em;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  min-width: 350px;
+  width: 100%;
+  // background-color: aqua;
+
+  @media screen and (min-width: 600px) {
+    min-width: 350px;
+  }
 }
 
 .game-words-dice-wrapper {
