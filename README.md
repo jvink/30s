@@ -1,5 +1,6 @@
 TODO:
 
+- Disabled buttons mooier
 - Referentie naar mijn portfolio maken
 - Builden en deployen op github pages
 - Logo maken
@@ -8,5 +9,6 @@ TODO:
 - Teams opslaan in cookies
 - Bug oplossen console
 - Scrollbar mooier
-- Disabled buttons mooier
+- Meer woorden
 - Timer checken (tijd loopt niet overeen met animatie)
+- Ads?

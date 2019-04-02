@@ -99,20 +99,14 @@ const Team = (props: any) => {
     }
 
     const handleStartGame = (): any => {
-        let valid = false;
         for (let i = 0; i < teams.length; i++) {
-            const team = teams[i];
-            if (team.players.length < 2) {
-                valid = false;
-                ToastsStore.error("Team " + (i + 1) + " moet minimaal uit 2 spelers bestaan!");
+            if (teams[i].players.length < 2) {
+                return ToastsStore.error("Team " + (i + 1) + " moet minimaal uit 2 spelers bestaan!");
             } else {
-                valid = true;
                 if (i === teams.length - 1) {
-                    if (valid) {
-                        props.onTeamsCreated(teams, winPoints);
-                    } else {
-                        ToastsStore.error("Ongeldige teams!");
-                    }
+                    return props.onTeamsCreated(teams, winPoints);
+                } else {
+                    return ToastsStore.error("Ongeldige teams!");
                 }
             }
         }
