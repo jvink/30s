@@ -25,6 +25,7 @@
 }
 
 .team-card-header-button {
+    visibility: hidden;
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -32,6 +33,11 @@
     font-size: 1.2em;
     color: #e84118;
     margin-left: auto;
+}
+
+.team-card:hover .team-card-header-button {
+    visibility: visible;
+    cursor: pointer;
 }
 
 /* Content */

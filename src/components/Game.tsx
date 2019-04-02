@@ -6,7 +6,7 @@ import Words from './Words';
 import Countdown from './Countdown';
 import Timer from './Timer';
 import TrophyIcon from 'mdi-react/TrophyIcon';
-import '../styles/Game.css';
+import '../styles/Game.scss';
 import Win from './Win';
 
 const Game = () => {

@@ -1,14 +1,13 @@
 TODO:
 
-- Disabled buttons mooier
 - Referentie naar mijn portfolio maken
-- Builden en deployen op github pages
 - Logo maken
-- Cross-platform testen
-- Mobile responsive maken
-- Teams opslaan in cookies
-- Bug oplossen console
-- Scrollbar mooier
 - Meer woorden
-- Timer checken (tijd loopt niet overeen met animatie)
+- Mobile responsive maken
+- Cross-platform testen
+- Scrollbar mooier?
+- Timer checken (tijd loopt niet overeen met animatie)?
+- Teams opslaan in cookies?
 - Ads?
+- Builden en deployen op github pages
+- toasts bug checken https://github.com/Vashnak/react-toasts/issues/9

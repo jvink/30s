@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import dutchWords from '../nl.json';
-import '../styles/Words.css';
+import '../styles/Words.scss';
 
 interface Props {
     getCorrectWords: (amount: number) => void

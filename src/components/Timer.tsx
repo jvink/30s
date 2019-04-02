@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Timer.scss';
 
 type Props = {
@@ -8,11 +8,14 @@ type Props = {
 const Timer = ({doneTimer}: Props) => {
     const [timerValue, setTimerValue] = useState<number>(30);
 
+    useEffect(() => {
+        countDownTimer();
+    }, [timerValue]);
+
     const countDownTimer = (): void => {
         timerValue > 0 ? setTimeout(() => setTimerValue(timerValue - 1), 1000) : doneTimer();
     }
 
-    countDownTimer();
 
     return (
         <div>

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ITeam from '../types/Types';
 import AddPlayerIcon from 'mdi-react/AccountPlusIcon';
 import DeleteIcon from 'mdi-react/DeleteIcon';
 import {ToastsContainer, ToastsStore, ToastsContainerPosition} from 'react-toasts';
-import '../styles/Team.css';
+import '../styles/Team.scss';
 
 const Team = (props: any) => {
-    const initialState = [{players: [], points: 0, currentPlayer: 0}, {players: [], points: 0, currentPlayer: 0}]
+    const initialState = [{players: ['AAA','BBB'], points: 0, currentPlayer: 0}, {players: ['CCC','DDD'], points: 0, currentPlayer: 0}]
     const [teams, setTeams] = useState<Array<ITeam>>(initialState);
     const [inputs, setInputs] = useState<Array<string>>(['', '']);
     const [winPoints, setWinPoints] = useState<number>(50);
@@ -82,10 +82,11 @@ const Team = (props: any) => {
     }
 
     const handleChange = (e: any, i: number): void => {
+        let value = e.target.value;
         setInputs(
             inputs.map((v:any, j: number) => {
                 if (j===i) {
-                    return v = e.target.value;
+                    return value;
                 }
             })
         );
@@ -98,15 +99,17 @@ const Team = (props: any) => {
         }
     }
 
-    const handleStartGame = (): any => {
+    const handleStartGame = (): void => {
         for (let i = 0; i < teams.length; i++) {
             if (teams[i].players.length < 2) {
-                return ToastsStore.error("Team " + (i + 1) + " moet minimaal uit 2 spelers bestaan!");
+                ToastsStore.error("Team " + (i + 1) + " moet minimaal uit 2 spelers bestaan!");
+                return;
             } else {
                 if (i === teams.length - 1) {
-                    return props.onTeamsCreated(teams, winPoints);
+                    props.onTeamsCreated(teams, winPoints);
+                    return;
                 } else {
-                    return ToastsStore.error("Ongeldige teams!");
+                    ToastsStore.error("Ongeldige teams!");
                 }
             }
         }
@@ -115,7 +118,7 @@ const Team = (props: any) => {
     return (
         <div>
             <div className="teams-wrapper">
-                <ToastsContainer position={ToastsContainerPosition.BOTTOM_CENTER} store={ToastsStore}/>
+                <ToastsContainer position={ToastsContainerPosition.BOTTOM_CENTER} store={ToastsStore} lightBackground/>
                 {teams.map((team, teamIndex) => {
                     return (
                         <div key={teamIndex} className="team-card">
@@ -128,13 +131,13 @@ const Team = (props: any) => {
                                     return (
                                         <div key={playerIndex} className="team-card-content-player">
                                             <span>{playerIndex + 1}. {player}</span>
-                                            <button onClick={() => removePlayer(teamIndex, playerIndex)} className="team-card-content-player-button"><DeleteIcon size={20} color="#2f3640"/></button>
+                                            <button onClick={() => removePlayer(teamIndex, playerIndex)} className="team-card-content-player-button"><DeleteIcon size={20} color="#7f8fa6"/></button>
                                         </div>
                                     );
                                 })}
                             </div> : null}
                             <form onSubmit={(event) => handleSubmit(event, teamIndex)} className="team-card-actions" autoComplete="off">
-                                <input disabled={team.players.length === 8 ? true : false} value={inputs[teamIndex]} onChange={(event) => handleChange(event, teamIndex)} placeholder={"Naam speler " + (team.players.length + 1)} className="team-card-actions-input" id={inputs[teamIndex] === "" ? "error" : ""}/>
+                                <input disabled={team.players.length === 8 ? true : false} name={"input"+teamIndex} value={inputs[teamIndex] || ''} onChange={(event) => handleChange(event, teamIndex)} placeholder={"Naam speler " + (team.players.length + 1)} className="team-card-actions-input" id={inputs[teamIndex] === "" ? "error" : ""}/>
                                 <button disabled={team.players.length === 8 ? true : false} onClick={() => addPlayer(teamIndex)} className="team-card-actions-button"><AddPlayerIcon/></button>
                             </form>
                         </div>
