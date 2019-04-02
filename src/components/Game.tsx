@@ -147,11 +147,13 @@ const Game = () => {
                 <div className="game-words-wrapper">
                     <Timer doneTimer={() => doneTimer()} />
                     <div className="game-words">
-                        {getNamesCurrentTurn()}
-                        <div className="game-words-dice-wrapper">
-                            <h2 className="game-words-title">Je gooide:</h2>
-                            <div className="game-words-dice">
-                                {diceValue}
+                        <div className="game-words-title-dice-wrapper">
+                            {getNamesCurrentTurn()}
+                            <div className="game-words-dice-wrapper">
+                                <h2 className="game-words-title">Je gooide:</h2>
+                                <div className="game-words-dice">
+                                    {diceValue}
+                                </div>
                             </div>
                         </div>
                         <hr className="game-words-hr" />
