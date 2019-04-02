@@ -3,14 +3,15 @@
 .app-wrapper {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .button-style {
     font-family: $font-default;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background-color: transparent;
-    border: 1px solid #f5f6fa;
-    color: #f5f6fa;
+    box-shadow: 0 4px 8px 0 $color-button-box-shadow;
+    background-color: $color-button-background;
+    border: 1px solid $color-button-border;
+    color: $color-button-text-color;
     margin: 1em;
     padding: 1em;
     font-size: 1em;
@@ -21,9 +22,9 @@
 }
 
 .button-style:hover {
-    background-color: #f5f6fa;
-    border: 1px solid #f5f6fa;
-    color: #353b48;
+    background-color: $color-button-hover-background;
+    border: 1px solid $color-button-hover-border;
+    color: $color-button-hover-text-color;
 }
 
 .button-style:disabled {
@@ -33,21 +34,21 @@
 
 .button-style:disabled:hover {
     background-color: transparent;
-    color: #f5f6fa;
+    color: $color-button-disabled-hover-text-color;
 }
 
 .button-style-inverted {
     font-family: $font-default;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background-color: #f5f6fa;
-    border: 1px solid #353b48;
+    box-shadow: 0 4px 8px 0 $color-button-inverted-box-shadow;
+    background-color: $color-button-inverted-background;
+    border: 1px solid $color-button-inverted-border;
     padding: .5em;
     font-size: 1em;
     border-radius: 8px;
-    color: #353b48;
+    color: $color-button-inverted-text-color;
     cursor: pointer;
 }
 
 .button-style-inverted:hover {
-    background-color: #e4e4e4;
+    background-color: $color-button-inverted-hover-background;
 }
