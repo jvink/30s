@@ -1,7 +1,6 @@
 TODO:
 
-- Referentie naar mijn portfolio maken
-- Logo maken
+- Logo/icon maken
 - Meer woorden
 - Mobile responsive maken
 - Cross-platform testen

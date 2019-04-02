@@ -1,15 +1,8 @@
-.balloons {
-  max-width: 300px;
-  max-height: 300px;
-  position: absolute;
-  visibility: hidden;
-  -webkit-animation: celebration 4s normal ease-out;
-    animation: celebration 4s 1  normal ease-out;
-}
+@import 'Variables';
 
 .win-wrapper {
   text-align: center;
-  color: #f5f6fa;
+  color: $color-text-primary;
   width: 100%;
   height: 100%;
   display: flex;

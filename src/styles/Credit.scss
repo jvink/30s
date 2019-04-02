@@ -1,0 +1,13 @@
+@import 'Variables';
+
+.credit-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}
+
+.credit {
+    position: relative;
+    left: -50%;
+    color: $color-text-primary;
+}

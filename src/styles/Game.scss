@@ -1,13 +1,15 @@
+@import 'Variables';
+
 .game {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80%;
-    color: #2f3640;
+    color: $color-text-accent;
 }
 
 .game-teams-title {
-    color: #f5f6fa;
+    color: $color-text-primary;
 }
 
 .game-dice {
@@ -15,12 +17,12 @@
 }
 
 .game-dice-title {
-    color: #f5f6fa;
+    color: $color-text-primary;
 }
 
 .game-dice-button {
-    background-color: #ffffff;
-    border: 2px solid #2f3640;
+    background-color: $color-dice-background;
+    border: 2px solid $color-dice-border;
     border-radius: 4px;
     width: 48px;
     height: 48px;
@@ -38,7 +40,7 @@
     position: absolute;
     right: 6em;
     top: 3em;
-    color: #f5f6fa;
+    color: $color-text-primary;
     text-align: center;
 }
 
@@ -47,12 +49,12 @@
 }
 
 .game-countdown-title {
-    color: #f5f6fa;
+    color: $color-text-primary;
 }
 
 .game-countdown-dice {
-    background-color: #f5f6fa;
-    border: 4px solid #2f3640;
+    background-color: $color-dice-background;
+    border: 4px solid $color-dice-border;
     border-radius: 8px;
     width: 120px;
     height: 120px;
@@ -78,8 +80,8 @@
 }
 
 .game-words {
-    background-color: #f5f6fa;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: $color-text-primary;
+    box-shadow: 0 4px 8px 0 $color-card-box-shadow;
     padding: 3em;
     margin: 1em;
     border-radius: 8px;
@@ -98,8 +100,8 @@
 }
 
 .game-words-dice {
-    background-color: #ffffff;
-    border: 2px solid #2f3640;
+    background-color: $color-dice-background;
+    border: 2px solid $color-dice-border;
     border-radius: 4px;
     width: 48px;
     height: 48px;
@@ -113,7 +115,7 @@
 
 .game-words-hr {
     width: 100%;
-    border: 1px solid #2f3640;
+    border: 1px solid $color-text-accent;
 }
 
 .game-words-result {
@@ -128,8 +130,8 @@
 }
 
 .game-results {
-    background-color: #f5f6fa;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: $color-text-primary;
+    box-shadow: 0 4px 8px 0 $color-card-box-shadow;
     padding: 2em;
     margin: 1em;
     border-radius: 8px;
@@ -139,7 +141,7 @@
 }
 
 .game-results-title {
-    color: #2f3640;
+    color: $color-text-accent;
     margin-top: 0;
     margin-bottom: .2em;
 }
@@ -147,13 +149,13 @@
 .game-results-table {
     margin-bottom: 1em;
     border-collapse: collapse;
-    border: 1px solid #2f3640;
-    background-color: #ececec;
+    border: 1px solid $color-table-border;
+    background-color: $color-table-background1;
 }
 
 .game-results-table-row:nth-child(even) {
-    background-color: #f5f6fa;
-    border: 1px solid #2f3640;
+    background-color: $color-table-background2;
+    border: 1px solid $color-table-border;
 }
 
 .game-win {

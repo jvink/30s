@@ -1,3 +1,5 @@
+@import 'Variables';
+
 $d: 100;
 $w: 30;
 $time: 5;
@@ -29,7 +31,7 @@ $time: 5;
         width: 100%;
         height: 100%;
         box-sizing: border-box;
-        border: $w+px solid #f5f6fa;
+        border: $w+px solid $color-text-primary;
         -webkit-animation-duration: $time+s;
         -webkit-animation-iteration-count: 1;
         -webkit-animation-timing-function: linear;
@@ -63,8 +65,8 @@ $time: 5;
     text-align: center;
     font-weight: 800;
     font-size: (($d - ($w * 2)) / 2)+px;
-    font-family: 'Sniglet', cursive;
-    color: #f5f6fa;
+    font-family: $font-default;
+    color: $color-text-primary;
     z-index: 2;
     -webkit-animation: fadeout .5s ($time + 1)+s 1 linear;
     -webkit-animation-fill-mode: forwards;

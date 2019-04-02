@@ -1,11 +1,13 @@
+@import 'Variables';
+
 .teams-wrapper {
     display: flex;
     flex-wrap: wrap;
 }
 
 .team-card {
-    background-color: #f5f6fa;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: $color-card-background;
+    box-shadow: 0 4px 8px 0 $color-card-box-shadow;
     padding: 2em;
     margin: 1em;
     border-radius: 8px;
@@ -29,9 +31,9 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-family: 'Sniglet', cursive;
+    font-family: $font-default;
     font-size: 1.2em;
-    color: #e84118;
+    color: $color-card-delete-button;
     margin-left: auto;
 }
 
@@ -49,7 +51,7 @@
 
 .team-card-content-player-button {
     visibility: hidden;
-    font-family: 'Sniglet', cursive;
+    font-family: $font-default;
     background-color: transparent;
     border: none;
     margin-left: auto;
@@ -65,12 +67,12 @@
 .team-card-actions {
     display: flex;
     margin-top: auto;
-    box-shadow: 0 4px 10px 1px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px 1px $color-card-actions-box-shadow;
     border-radius: 10px;
 }
 
 .team-card-actions-input {
-    font-family: 'Sniglet', cursive;
+    font-family: $font-default;
     border: none;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -79,14 +81,14 @@
 }
 
 .team-card-actions-button {
-    font-family: 'Sniglet', cursive;
-    background-color: #f5f6fa;
+    font-family: $font-default;
+    background-color: $color-card-actions-background;
     border: none;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     cursor: pointer;
     flex: 1;
-    color: #7f8fa6;
+    color: $color-card-actions-color;
 }
 
 .team-card-actions-button:disabled {
@@ -95,15 +97,15 @@
 
 .win {
     display: flex;
-    color: #f5f6fa;
+    color: $color-text-primary;
     margin: 1em;
     align-items: center;
 }
 
 .win-points {
-    font-family: 'Sniglet', cursive;
-    box-shadow: 0 4px 10px 1px rgba(0,0,0,0.1);
-    color: #2f3640;
+    font-family: $font-default;
+    box-shadow: 0 4px 10px 1px $color-card-box-shadow;
+    color: $color-text-accent;
     border: none;
     border-radius: 10px;
     padding: .5em;

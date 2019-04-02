@@ -1,10 +1,12 @@
+@import './styles/Variables';
+
 html,
 body,
 #root {
   margin: 1em;
   padding: 0;
   height: 100%;
-  font-family: 'Sniglet', cursive;
+  font-family: $font-default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
