@@ -50,12 +50,23 @@
 .game-current {
   color: $color-text-primary;
   text-align: center;
+  margin-bottom: 1em;
+  position: absolute;
+  right: 6em;
+  top: 3em;
 
-  @media screen and (min-width: 600px) {
-    position: absolute;
-    right: 6em;
-    top: 3em;
+  @media screen and (max-width: 600px) {
+    right: 1em;
+    top: 1em;
   }
+
+  h2 {
+    margin: 0.3em;
+  }
+}
+
+.game-words-title-dice-wrapper {
+  display: flex;
 }
 
 .game-countdown {
@@ -96,6 +107,9 @@
 .game-words-wrapper {
   @media screen and (max-width: 600px) {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -105,21 +119,27 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  // background-color: aqua;
+  width: 90%;
+  padding: 1em;
+
+  @media screen and (max-width: 600px) {
+    margin-bottom: 2em;
+  }
 
   @media screen and (min-width: 600px) {
     min-width: 350px;
+    padding: 2em;
   }
 }
 
 .game-words-dice-wrapper {
   display: flex;
+  margin-left: auto;
 }
 
 .game-words-title {
-  color: #2f3640;
-  margin-right: 2em;
+  color: $color-text-accent;
+  margin-right: 1em;
 }
 
 .game-words-dice {
@@ -161,6 +181,10 @@
   display: flex;
   flex-direction: column;
   min-width: 350px;
+
+  @media screen and (max-width: 600px) {
+    margin-top: 3em;
+  }
 }
 
 .game-results-title {
