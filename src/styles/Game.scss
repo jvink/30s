@@ -1,178 +1,188 @@
-@import 'Variables';
+@import "Variables";
 
 .game {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-text-accent;
+  @media screen and (min-width: 600px) {
     height: 80%;
-    color: $color-text-accent;
+  }
 }
 
 .game-teams-title {
-    color: $color-text-primary;
+  color: $color-text-primary;
+  @media screen and (max-width: 600px) {
+    text-align: end;
+    margin-right: 1em;
+  }
+  @media screen and (max-width: 350px) {
+    visibility: hidden;
+  }
 }
 
 .game-dice {
-    text-align: center;
+  text-align: center;
 }
 
 .game-dice-title {
-    color: $color-text-primary;
+  color: $color-text-primary;
 }
 
 .game-dice-button {
-    background-color: $color-dice-background;
-    border: 2px solid $color-dice-border;
-    border-radius: 4px;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    margin-top: 1.5em;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
+  background-color: $color-dice-background;
+  border: 2px solid $color-dice-border;
+  border-radius: 4px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 1.5em;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
 }
 
 .game-current {
-    position: absolute;
-    right: 6em;
-    top: 3em;
-    color: $color-text-primary;
-    text-align: center;
+  position: absolute;
+  right: 6em;
+  top: 3em;
+  color: $color-text-primary;
+  text-align: center;
 }
 
 .game-countdown {
-    text-align: center;
+  text-align: center;
 }
 
 .game-countdown-title {
-    color: $color-text-primary;
+  color: $color-text-primary;
 }
 
 .game-countdown-dice {
-    background-color: $color-dice-background;
-    border: 4px solid $color-dice-border;
-    border-radius: 8px;
-    width: 120px;
-    height: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 48px;
-    margin-left: auto;
-    margin-right: auto;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    animation-direction: alternate;
+  background-color: $color-dice-background;
+  border: 4px solid $color-dice-border;
+  border-radius: 8px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  margin-left: auto;
+  margin-right: auto;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
 }
 
 .dice-grow {
-    animation-name: dice-grow-animation;
-    animation-duration: 1s;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    animation-direction: alternate;
+  animation-name: dice-grow-animation;
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
 }
 
 .game-words {
-    background-color: $color-text-primary;
-    box-shadow: 0 4px 8px 0 $color-card-box-shadow;
-    padding: 3em;
-    margin: 1em;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    min-width: 350px;
+  background-color: $color-text-primary;
+  box-shadow: 0 4px 8px 0 $color-card-box-shadow;
+  padding: 3em;
+  margin: 1em;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
 }
 
 .game-words-dice-wrapper {
-    display: flex;
+  display: flex;
 }
 
 .game-words-title {
-    color: #2f3640;
-    margin-right: 2em;
+  color: #2f3640;
+  margin-right: 2em;
 }
 
 .game-words-dice {
-    background-color: $color-dice-background;
-    border: 2px solid $color-dice-border;
-    border-radius: 4px;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    margin-left: auto;
-    margin: 8px;
+  background-color: $color-dice-background;
+  border: 2px solid $color-dice-border;
+  border-radius: 4px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-left: auto;
+  margin: 8px;
 }
 
 .game-words-hr {
-    width: 100%;
-    border: 1px solid $color-text-accent;
+  width: 100%;
+  border: 1px solid $color-text-accent;
 }
 
 .game-words-result {
-    margin-top: 1em;
-    font-size: 1.2em;
+  margin-top: 1em;
+  font-size: 1.2em;
 }
 
 .game-words-result-value {
-    font-weight: bold;
-    font-size: 1.25em;
-    margin-left: .5em;
+  font-weight: bold;
+  font-size: 1.25em;
+  margin-left: 0.5em;
 }
 
 .game-results {
-    background-color: $color-text-primary;
-    box-shadow: 0 4px 8px 0 $color-card-box-shadow;
-    padding: 2em;
-    margin: 1em;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    min-width: 350px;
+  background-color: $color-text-primary;
+  box-shadow: 0 4px 8px 0 $color-card-box-shadow;
+  padding: 2em;
+  margin: 1em;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
 }
 
 .game-results-title {
-    color: $color-text-accent;
-    margin-top: 0;
-    margin-bottom: .2em;
+  color: $color-text-accent;
+  margin-top: 0;
+  margin-bottom: 0.2em;
 }
 
 .game-results-table {
-    margin-bottom: 1em;
-    border-collapse: collapse;
-    border: 1px solid $color-table-border;
-    background-color: $color-table-background1;
+  margin-bottom: 1em;
+  border-collapse: collapse;
+  border: 1px solid $color-table-border;
+  background-color: $color-table-background1;
 }
 
 .game-results-table-row:nth-child(even) {
-    background-color: $color-table-background2;
-    border: 1px solid $color-table-border;
+  background-color: $color-table-background2;
+  border: 1px solid $color-table-border;
 }
 
 .game-win {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-td, th {
-    padding: .5em;
-    text-align: center;
+td,
+th {
+  padding: 0.5em;
+  text-align: center;
 }
 
 @keyframes dice-grow-animation {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(1.3);
-    }
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.3);
+  }
 }

@@ -1,116 +1,125 @@
-@import 'Variables';
+@import "Variables";
 
 .teams-wrapper {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .team-card {
-    background-color: $color-card-background;
-    box-shadow: 0 4px 8px 0 $color-card-box-shadow;
-    padding: 2em;
-    margin: 1em;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
+  background-color: $color-card-background;
+  box-shadow: 0 4px 8px 0 $color-card-box-shadow;
+  padding: 2em;
+  margin: 1em;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 }
 
 /* Header */
 
 .team-card-header {
-    display: flex;
-    margin-bottom: 1em;
+  display: flex;
+  margin-bottom: 1em;
 }
 
 .team-card-header-title {
-    margin: 0;
+  margin: 0;
 }
 
 .team-card-header-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: $font-default;
+  font-size: 1.2em;
+  color: $color-card-delete-button;
+  margin-left: auto;
+  @media screen and (min-width: 800px) {
     visibility: hidden;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-family: $font-default;
-    font-size: 1.2em;
-    color: $color-card-delete-button;
-    margin-left: auto;
+  }
 }
 
 .team-card:hover .team-card-header-button {
-    visibility: visible;
-    cursor: pointer;
+  visibility: visible;
+  cursor: pointer;
 }
 
 /* Content */
 
 .team-card-content-player {
-    display: flex;
-    margin: 1em;
+  display: flex;
+  margin: 1em;
 }
 
 .team-card-content-player-button {
+  font-family: $font-default;
+  background-color: transparent;
+  border: none;
+  margin-left: auto;
+  @media screen and (min-width: 800px) {
     visibility: hidden;
-    font-family: $font-default;
-    background-color: transparent;
-    border: none;
-    margin-left: auto;
+  }
 }
 
 .team-card-content-player:hover .team-card-content-player-button {
-    visibility: visible;
-    cursor: pointer;
+  visibility: visible;
+  cursor: pointer;
 }
 
 /* Actions */
 
 .team-card-actions {
-    display: flex;
-    margin-top: auto;
-    box-shadow: 0 4px 10px 1px $color-card-actions-box-shadow;
-    border-radius: 10px;
+  display: flex;
+  margin-top: auto;
+  box-shadow: 0 4px 10px 1px $color-card-actions-box-shadow;
+  border-radius: 10px;
 }
 
 .team-card-actions-input {
-    font-family: $font-default;
-    border: none;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    padding: 1em;
-    outline: none;
+  font-family: $font-default;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 1em;
+  flex: 5;
+  outline: none;
 }
 
 .team-card-actions-button {
-    font-family: $font-default;
-    background-color: $color-card-actions-background;
-    border: none;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    cursor: pointer;
-    flex: 1;
-    color: $color-card-actions-color;
+  font-family: $font-default;
+  background-color: $color-card-actions-background;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+  flex: 1;
+  color: $color-card-actions-color;
 }
 
 .team-card-actions-button:disabled {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 .win {
-    display: flex;
-    color: $color-text-primary;
-    margin: 1em;
-    align-items: center;
+  display: flex;
+  color: $color-text-primary;
+  margin: 1em;
+  align-items: center;
 }
 
 .win-points {
-    font-family: $font-default;
-    box-shadow: 0 4px 10px 1px $color-card-box-shadow;
-    color: $color-text-accent;
-    border: none;
-    border-radius: 10px;
-    padding: .5em;
-    margin-left: .5em;
-    margin-right: .5em;
-    outline: none;
-    max-width: 40px;
+  font-family: $font-default;
+  box-shadow: 0 4px 10px 1px $color-card-box-shadow;
+  color: $color-text-accent;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  outline: none;
+  max-width: 40px;
 }
