@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from './components/Logo';
 import Game from './components/Game';
 import Credit from './components/Credit';
 import './App.scss';
@@ -16,6 +17,7 @@ setRandomBackGroundColor();
 const App = () => {
   return (
     <div className="app-wrapper">
+      <Logo/>
       <Game/>
       <Credit/>
     </div>
