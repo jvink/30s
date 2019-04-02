@@ -6,7 +6,7 @@ type Props = {
 }
 
 const Timer = ({doneTimer}: Props) => {
-    const [timerValue, setTimerValue] = useState<number>(3);
+    const [timerValue, setTimerValue] = useState<number>(30);
 
     useEffect(() => {
         countDownTimer();

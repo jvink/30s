@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ITeam from '../types/Types';
 import AddPlayerIcon from 'mdi-react/AccountPlusIcon';
 import DeleteIcon from 'mdi-react/DeleteIcon';
@@ -6,7 +6,7 @@ import {ToastsContainer, ToastsStore, ToastsContainerPosition} from 'react-toast
 import '../styles/Team.scss';
 
 const Team = (props: any) => {
-    const initialState = [{players: ['AAA','BBB'], points: 0, currentPlayer: 0}, {players: ['CCC','DDD'], points: 0, currentPlayer: 0}]
+    const initialState = [{players: [], points: 0, currentPlayer: 0}, {players: [], points: 0, currentPlayer: 0}]
     const [teams, setTeams] = useState<Array<ITeam>>(initialState);
     const [inputs, setInputs] = useState<Array<string>>(['', '']);
     const [winPoints, setWinPoints] = useState<number>(50);

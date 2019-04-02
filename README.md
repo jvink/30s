@@ -1,8 +1,6 @@
 TODO:
 
-- responsive maken
 - Meer woorden
-- Cross-platform testen
 - Scrollbar mooier?
 - Teams opslaan in cookies?
 - Ads?
