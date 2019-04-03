@@ -13,7 +13,7 @@ const Win = ({team}: Props) => {
             <Confetti/>
             <h1>Gefeliciteerd!</h1>
             <h2>Het team van {team.players[0]} wint!</h2>
-            <button className="button-style" onClick={() => window.location.replace("/")}>Speel opnieuw</button>
+            <button className="button-style" onClick={() => window.location.replace("/30s/")}>Speel opnieuw</button>
         </div>
     );
 }
