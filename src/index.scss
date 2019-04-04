@@ -3,15 +3,9 @@
 html,
 body,
 #root {
-  height: 100%;
   font-family: $font-default;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-@media screen and (min-width: 600px) {
-  body {
-    overflow: hidden;
-    margin: 0.5em;
-  }
+  height: 100%;
+  margin: 0;
 }

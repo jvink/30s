@@ -2,11 +2,11 @@
 
 .game {
   display: flex;
-  justify-content: center;
-  align-items: center;
   color: $color-text-accent;
+  height: 100%;
   @media screen and (min-width: 600px) {
-    height: 80%;
+    justify-content: center;
+    align-items: center;
   }
 }
 

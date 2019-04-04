@@ -3,6 +3,9 @@
 .teams-wrapper {
   display: flex;
   flex-wrap: wrap;
+  @media screen and (max-width: 600px) {
+    margin-bottom: 1em;
+  }
 }
 
 .team-card {
@@ -109,6 +112,12 @@
   color: $color-text-primary;
   margin: 1em;
   align-items: center;
+}
+
+.win-text {
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+  }
 }
 
 .win-points {

@@ -122,7 +122,7 @@ const Game = () => {
     return (
         <div className="game">
             {gameStage === 0 && !gameOver ?
-                <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
+                <div >
                     <h2 className="game-teams-title">Stel de teams samen!</h2>
                     <Team onTeamsCreated={(createdTeams: Array<ITeam>, winPoints: number) => doneTeam(createdTeams, winPoints)} />
                 </div> : null}
