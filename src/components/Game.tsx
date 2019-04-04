@@ -134,21 +134,24 @@ const Game = () => {
                 </div> : null}
             {gameStage === 2 && !gameOver ?
                 <div className="game-countdown">
+                    <h2 className="game-countdown-title">Klaar?</h2>
+                    <Countdown doneCountdown={() => doneCountdown()} />
                     {getNamesCurrentTurn()}
                     <h2 className="game-countdown-title">Je gooide:</h2>
                     <div className="game-countdown-dice">
                         {diceValue}
                     </div>
                     <br />
-                    <h2 className="game-countdown-title">Klaar?</h2>
-                    <Countdown doneCountdown={() => doneCountdown()} />
                 </div> : null}
             {gameStage === 3 && !gameOver ?
                 <div className="game-words-wrapper">
                     <Timer doneTimer={() => doneTimer()} />
                     <div className="game-words">
                         <div className="game-words-title-dice-wrapper">
-                            {getNamesCurrentTurn()}
+                            <div className="game-words-current">
+                                {currentTeam ? <h2 className="game-words-current-team-title">{"Team " + ((teams.findIndex((team) => team === currentTeam)) + 1)}</h2> : null}
+                                {currentTeam ? <span className="game-words-current-team-subtitle">{currentTeam.players[currentTeam.currentPlayer] + " is aan de beurt"}</span> : null}
+                            </div>
                             <div className="game-words-dice-wrapper">
                                 <h2 className="game-words-title">Je gooide:</h2>
                                 <div className="game-words-dice">

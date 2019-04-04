@@ -5,8 +5,8 @@ type Props = {
     doneTimer: () => void;
 }
 
-const Timer = ({doneTimer}: Props) => {
-    const [timerValue, setTimerValue] = useState<number>(30);
+const Timer = ({ doneTimer }: Props) => {
+    const [timerValue, setTimerValue] = useState<number>(3330);
 
     useEffect(() => {
         countDownTimer();
@@ -18,12 +18,10 @@ const Timer = ({doneTimer}: Props) => {
 
 
     return (
-        <div>
-            <div className="circle center">
-                <div className="count">{timerValue}</div>
-                <div className="l-half"></div>
-                <div className="r-half"></div>
-            </div>
+        <div className="circle center">
+            <div className="count">{timerValue}</div>
+            <div className="l-half"></div>
+            <div className="r-half"></div>
         </div>
     );
 }

@@ -1,16 +1,8 @@
 @import "Variables";
 
-$d: 100;
+$d: 120;
 $w: 30;
 $t: 30;
-
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -($d / 2) + px;
-  margin-left: -($d / 2) + px;
-}
 
 /* -- CIRCLE -- */
 
@@ -18,12 +10,13 @@ $t: 30;
   width: $d + px;
   height: $d + px;
   position: relative;
-  border-radius: 999px;
-  box-shadow: inset 0 0 0 $w + px rgba(255, 255, 255, 0.5);
-  margin-bottom: 1em;
-
+  border-radius: 100%;
+  box-shadow: inset 0 0 0 $w + px #dcdde1;
   @media screen and (max-width: 600px) {
-    margin-top: 1em;
+    margin: .5em;
+  }
+  @media screen and (min-width: 600px) {
+    margin-bottom: 1em;
   }
 }
 
@@ -74,7 +67,7 @@ $t: 30;
   font-weight: 800;
   font-size: (($d - ($w * 2)) / 2) + px;
   font-family: $font-default;
-  color: $color-text-primary;
+  color: $color-text-accent;
   z-index: 2;
   -webkit-animation: fadeout 0.5s ($t + 1) + s 1 linear;
   -webkit-animation-fill-mode: forwards;

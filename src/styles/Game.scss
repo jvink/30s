@@ -89,6 +89,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
   }
 }
 
@@ -124,12 +125,9 @@
 }
 
 .game-words-wrapper {
-  @media screen and (max-width: 600px) {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .game-words {
@@ -151,14 +149,49 @@
   }
 }
 
+@media screen and (min-width: 600px) {
+  .game-words-current {
+    color: $color-text-primary;
+    text-align: center;
+    margin-bottom: 1em;
+    position: absolute;
+    right: 6em;
+    top: 3em;
+  }
+
+  .game-words-current {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 .game-words-dice-wrapper {
-  display: flex;
   margin-left: auto;
+  display: flex;
+}
+
+@media screen and (max-width: 600px) {
+  .game-words-current {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .game-words-current-team-title {
+    margin: 0;
+  }
 }
 
 .game-words-title {
+  visibility: hidden;
   color: $color-text-accent;
   margin-right: 1em;
+  @media screen and (min-width: 600px) {
+    visibility: visible;
+  }
 }
 
 .game-words-dice {
