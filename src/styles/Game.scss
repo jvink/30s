@@ -2,12 +2,18 @@
 
 .game {
   display: flex;
+  flex-direction: column;
   color: $color-text-accent;
   height: 100%;
   @media screen and (min-width: 600px) {
     justify-content: center;
     align-items: center;
   }
+}
+
+.game-teams-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .game-teams-title {
@@ -75,7 +81,14 @@
 }
 
 .game-countdown {
+  width: 100%;
   text-align: center;
+  @media screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .game-countdown-title {

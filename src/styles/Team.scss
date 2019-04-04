@@ -107,6 +107,11 @@
   cursor: not-allowed;
 }
 
+.team-actions {
+  display: flex;
+  flex-direction: column;
+}
+
 .win {
   display: flex;
   color: $color-text-primary;

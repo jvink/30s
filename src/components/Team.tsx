@@ -116,35 +116,41 @@ const Team = (props: any) => {
     }
 
     return (
-        <div className="teams-wrapper">
-            <ToastsContainer position={ToastsContainerPosition.BOTTOM_CENTER} store={ToastsStore} lightBackground />
-            {teams.map((team, teamIndex) => {
-                return (
-                    <div key={teamIndex} className="team-card">
-                        <div className="team-card-header">
-                            <h2 className="team-card-header-title">Team {teamIndex + 1}</h2>
-                            <button onClick={() => removeTeam(teamIndex)} className="team-card-header-button">X</button>
+        <div>
+            <div className="teams-wrapper">
+                <ToastsContainer position={ToastsContainerPosition.BOTTOM_CENTER} store={ToastsStore} lightBackground />
+                {teams.map((team, teamIndex) => {
+                    return (
+                        <div key={teamIndex} className="team-card">
+                            <div className="team-card-header">
+                                <h2 className="team-card-header-title">Team {teamIndex + 1}</h2>
+                                <button onClick={() => removeTeam(teamIndex)} className="team-card-header-button">X</button>
+                            </div>
+                            {team.players.length > 0 ? <div>
+                                {team.players.map((player, playerIndex) => {
+                                    return (
+                                        <div key={playerIndex} className="team-card-content-player">
+                                            <span>{playerIndex + 1}. {player}</span>
+                                            <button onClick={() => removePlayer(teamIndex, playerIndex)} className="team-card-content-player-button"><DeleteIcon size={20} color="#7f8fa6" /></button>
+                                        </div>
+                                    );
+                                })}
+                            </div> : null}
+                            <form onSubmit={(event) => handleSubmit(event, teamIndex)} className="team-card-actions" autoComplete="off">
+                                <input disabled={team.players.length === 8 ? true : false} name={"input" + teamIndex} value={inputs[teamIndex] || ''} onChange={(event) => handleChange(event, teamIndex)} placeholder={"Naam speler " + (team.players.length + 1)} className="team-card-actions-input" id={inputs[teamIndex] === "" ? "error" : ""} />
+                                <button disabled={team.players.length === 8 ? true : false} onClick={() => addPlayer(teamIndex)} className="team-card-actions-button"><AddPlayerIcon /></button>
+                            </form>
                         </div>
-                        {team.players.length > 0 ? <div>
-                            {team.players.map((player, playerIndex) => {
-                                return (
-                                    <div key={playerIndex} className="team-card-content-player">
-                                        <span>{playerIndex + 1}. {player}</span>
-                                        <button onClick={() => removePlayer(teamIndex, playerIndex)} className="team-card-content-player-button"><DeleteIcon size={20} color="#7f8fa6" /></button>
-                                    </div>
-                                );
-                            })}
-                        </div> : null}
-                        <form onSubmit={(event) => handleSubmit(event, teamIndex)} className="team-card-actions" autoComplete="off">
-                            <input disabled={team.players.length === 8 ? true : false} name={"input" + teamIndex} value={inputs[teamIndex] || ''} onChange={(event) => handleChange(event, teamIndex)} placeholder={"Naam speler " + (team.players.length + 1)} className="team-card-actions-input" id={inputs[teamIndex] === "" ? "error" : ""} />
-                            <button disabled={team.players.length === 8 ? true : false} onClick={() => addPlayer(teamIndex)} className="team-card-actions-button"><AddPlayerIcon /></button>
-                        </form>
-                    </div>
-                );
-            })}
-            <div className="win"><span className="win-text">Het team dat als eerste </span><input value={winPoints} onChange={(e) => handleChangeWinPoints(e)} type="number" className="win-points"></input><span className="win-text"> punten haalt, wint!</span></div>
-            <button onClick={() => addTeam()} disabled={teams.length === 6 ? true : false} className="button-style">Team toevoegen</button>
-            <button onClick={() => handleStartGame()} disabled={teams.length < 2 ? true : false} className="button-style">Start Spel!</button>
+                    );
+                })}
+            </div>
+            <div className="team-actions">
+                <div className="win"><span className="win-text">Het team dat als eerste </span><input value={winPoints} onChange={(e) => handleChangeWinPoints(e)} type="number" className="win-points"></input><span className="win-text"> punten haalt, wint!</span></div>
+                <div>
+                    <button onClick={() => addTeam()} disabled={teams.length === 6 ? true : false} className="button-style">Team toevoegen</button>
+                    <button onClick={() => handleStartGame()} disabled={teams.length < 2 ? true : false} className="button-style">Start Spel!</button>
+                </div>
+            </div>
         </div>
     );
 }
