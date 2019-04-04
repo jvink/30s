@@ -6,7 +6,7 @@ import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toa
 import '../styles/Team.scss';
 
 const Team = (props: any) => {
-    const initialState = [{ players: ['a', 'b'], points: 0, currentPlayer: 0 }, { players: ['c', 'd'], points: 0, currentPlayer: 0 }]
+    const initialState = [{ players: [], points: 0, currentPlayer: 0 }, { players: [], points: 0, currentPlayer: 0 }]
     const [teams, setTeams] = useState<Array<ITeam>>(initialState);
     const [inputs, setInputs] = useState<Array<string>>(['', '']);
     const [winPoints, setWinPoints] = useState<number>(50);
