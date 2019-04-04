@@ -170,24 +170,26 @@ const Game = () => {
                     </div>
                 </div> : null}
             {gameStage === 4 && winPointsValue && !gameOver ?
-                <div className="game-results">
-                    <h2 className="game-results-title">Puntentotaal</h2>
-                    <p>Het team dat als eerste {winPointsValue} punten haalt, wint!</p>
-                    <table className="game-results-table">
-                        <tbody>
-                            <tr>
-                                <th></th>
-                                <th>
-                                    Team van
+                <div className="game-results-wrapper">
+                    <div className="game-results">
+                        <h2 className="game-results-title">Puntentotaal</h2>
+                        <p>Het team dat als eerste {winPointsValue} punten haalt, wint!</p>
+                        <table className="game-results-table">
+                            <tbody>
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        Team van
                                 </th>
-                                <th>
-                                    Punten
+                                    <th>
+                                        Punten
                                 </th>
-                            </tr>
-                            {getTeamsSortedByPoints()}
-                        </tbody>
-                    </table>
-                    <button onClick={() => setNextTeam()} className="button-style-inverted">Volgende ronde</button>
+                                </tr>
+                                {getTeamsSortedByPoints()}
+                            </tbody>
+                        </table>
+                        <button onClick={() => setNextTeam()} className="button-style-inverted">Volgende ronde</button>
+                    </div>
                 </div> : null}
             {gameOver ?
                 <div className="game-win">

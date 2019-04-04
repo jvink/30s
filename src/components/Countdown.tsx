@@ -6,7 +6,7 @@ type Props = {
 }
 
 const Countdown = ({doneCountdown}: Props) => {
-    const [countdownValue, setCountdownValue] = useState<number>(5);
+    const [countdownValue, setCountdownValue] = useState<number>(1);
 
     const countdownToStart = (): void => {
         countdownValue > 0 ? setTimeout(() => setCountdownValue(countdownValue - 1), 1000) : doneCountdown();
