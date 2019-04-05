@@ -1,7 +1,6 @@
 Roadmap:
 
 - Laatste secondes van de timer meer visible
-- Streep door geraden woord en grijs
 - Uitleg
 - Mogelijkheid om te skippen naar results
 - Vanaf results eventueel terug om score goed te zetten

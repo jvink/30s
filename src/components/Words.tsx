@@ -60,8 +60,9 @@ const Words = (props: Props) => {
                     })}
                 </form>
                 <hr className="words-hr" />
-                <div className="words-result">
-                    Totaal punten: <span className="words-result-value">{props.currentPoints}</span>
+                <div className="words-result-wrapper">
+                    <span className="words-result">Totaal punten: <span className="words-result-value">{props.currentPoints}</span></span>
+                    {((props.currentPoints + props.diceValue) - 5) === 0 ? <button className="button-style-inverted" onClick={() => props.doneTimer()}>Volgende</button> : null}
                 </div>
             </div>
         </div>
