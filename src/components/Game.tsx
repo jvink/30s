@@ -12,7 +12,7 @@ const Game = () => {
     const [teams, setTeams] = useState<Array<ITeam>>([]);
     const [currentTeam, setCurrentTeam] = useState();
     const [diceValue, setDiceValue] = useState<number>();
-    const [gameStage, setGameStage] = useState<number>(3);
+    const [gameStage, setGameStage] = useState<number>(0);
     const [correctWords, setCorrectWords] = useState<number>(0);
     const [winPointsValue, setWinPointsValue] = useState<number>();
     const [gameOver, setGameOver] = useState<ITeam>();
