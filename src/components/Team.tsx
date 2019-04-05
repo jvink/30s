@@ -117,6 +117,7 @@ const Team = (props: any) => {
 
     return (
         <div>
+            <h2 className="game-teams-title">Stel de teams samen!</h2>
             <div className="teams-wrapper">
                 <ToastsContainer position={ToastsContainerPosition.BOTTOM_CENTER} store={ToastsStore} lightBackground />
                 {teams.map((team, teamIndex) => {

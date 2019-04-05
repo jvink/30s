@@ -17,9 +17,11 @@ setRandomBackGroundColor();
 const App = () => {
   return (
     <div className="app-wrapper">
-      <Logo/>
-      <Game/>
-      <Credit/>
+      <Logo />
+      <div className="app-game-wrapper">
+        <Game />
+      </div>
+      <Credit />
     </div>
   );
 }

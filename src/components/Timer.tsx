@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Timer.scss';
 
-type Props = {
+interface Props {
     doneTimer: () => void;
 }
 
@@ -9,13 +9,12 @@ const Timer = ({ doneTimer }: Props) => {
     const [timerValue, setTimerValue] = useState<number>(30);
 
     useEffect(() => {
-        countDownTimer();
+        countdownTimer();
     }, [timerValue]);
 
-    const countDownTimer = (): void => {
+    const countdownTimer = (): void => {
         timerValue > 0 ? setTimeout(() => setTimerValue(timerValue - 1), 1000) : doneTimer();
     }
-
 
     return (
         <div className="circle center">

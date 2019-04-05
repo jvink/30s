@@ -4,9 +4,8 @@ import Team from './Team';
 import Dice from './Dice';
 import Words from './Words';
 import Countdown from './Countdown';
-import Timer from './Timer';
 import Win from './Win';
-import TrophyIcon from 'mdi-react/TrophyIcon';
+import Result from './Result';
 import '../styles/Game.scss';
 
 const Game = () => {
@@ -85,118 +84,44 @@ const Game = () => {
         });
     }
 
-    const getNamesCurrentTurn = () => {
-        return (
-            <span className="game-current">
-                {currentTeam ? <h2>{"Team " + ((teams.findIndex((team) => team === currentTeam)) + 1)}</h2> : null}
-                {currentTeam ? currentTeam.players[currentTeam.currentPlayer] + " is aan de beurt" : null}
-            </span>
-        );
+    if (gameOver) {
+        return <Win team={gameOver} />;
+    } else {
+        switch (gameStage) {
+            case 0:
+                return <Team
+                    onTeamsCreated={(createdTeams: Array<ITeam>, winPoints: number) => doneTeam(createdTeams, winPoints)} />;
+            case 1:
+                return <Dice
+                    currentTeam={currentTeam}
+                    teams={teams}
+                    onDiceRolled={(value: number) => doneDiceRoll(value)}
+                    maxDice={3} />;
+            case 2:
+                return <Countdown
+                    diceValue={diceValue ? diceValue : 0}
+                    currentTeam={currentTeam}
+                    teams={teams}
+                    doneCountdown={() => doneCountdown()} />;
+            case 3:
+                return <Words
+                    diceValue={diceValue ? diceValue : 0}
+                    currentTeamIndex={(teams.findIndex((team) => team === currentTeam)) + 1}
+                    currentTeam={currentTeam}
+                    currentPoints={correctWords - (diceValue !== undefined ? diceValue : 0)}
+                    doneTimer={() => doneTimer()}
+                    getCorrectWords={(amount: number) => {
+                        setCorrectWords(amount);
+                    }} />;
+            case 4:
+                return <Result
+                    teams={teams}
+                    winPointsValue={winPointsValue || 0}
+                    setNextTeam={() => setNextTeam()} />;
+            default:
+                return <h1>Not found</h1>;
+        }
     }
-
-    const getTeamsSortedByPoints = () => {
-        var sortedTeams = teams.slice(0);
-        sortedTeams.sort((team1, team2) => {
-            return team2.points - team1.points;
-        });
-
-        return sortedTeams.map((team, i) => {
-            return (
-                <tr key={i} className="game-results-table-row">
-                    <td>
-                        {i === 0 ? <TrophyIcon color="#e1b12c" /> : null}
-                        {i === 1 ? <TrophyIcon color="#bdc3c7" /> : null}
-                        {i === 2 ? <TrophyIcon color="#cd7f32" /> : null}
-                    </td>
-                    <td>
-                        {team.players[0]}
-                    </td>
-                    <td>
-                        {team.points}
-                    </td>
-                </tr>
-            );
-        });
-    }
-
-    return (
-        <div className="game">
-            {gameStage === 0 && !gameOver ?
-                <div className="game-teams-wrapper">
-                    <h2 className="game-teams-title">Stel de teams samen!</h2>
-                    <Team onTeamsCreated={(createdTeams: Array<ITeam>, winPoints: number) => doneTeam(createdTeams, winPoints)} />
-                </div> : null}
-            {(gameStage === 1 && !gameOver) && currentTeam ?
-                <div className="game-dice">
-                    <h2 className="game-dice-title">Gooi de dobbelsteen!</h2>
-                    {getNamesCurrentTurn()}
-                    <Dice onDiceRolled={(value: number) => doneDiceRoll(value)} maxDice={3} />
-                </div> : null}
-            {gameStage === 2 && !gameOver ?
-                <div className="game-countdown">
-                    <h2 className="game-countdown-title">Klaar?</h2>
-                    <Countdown doneCountdown={() => doneCountdown()} />
-                    {getNamesCurrentTurn()}
-                    <h2 className="game-countdown-title">Je gooide:</h2>
-                    <div className="game-countdown-dice">
-                        {diceValue}
-                    </div>
-                    <br />
-                </div> : null}
-            {gameStage === 3 && !gameOver ?
-                <div className="game-words-wrapper">
-                    <Timer doneTimer={() => doneTimer()} />
-                    <div className="game-words">
-                        <div className="game-words-title-dice-wrapper">
-                            <div className="game-words-current">
-                                {currentTeam ? <h2 className="game-words-current-team-title">{"Team " + ((teams.findIndex((team) => team === currentTeam)) + 1)}</h2> : null}
-                                {currentTeam ? <span className="game-words-current-team-subtitle">{currentTeam.players[currentTeam.currentPlayer] + " is aan de beurt"}</span> : null}
-                            </div>
-                            <div className="game-words-dice-wrapper">
-                                <h2 className="game-words-title">Je gooide:</h2>
-                                <div className="game-words-dice">
-                                    {diceValue}
-                                </div>
-                            </div>
-                        </div>
-                        <hr className="game-words-hr" />
-                        <Words getCorrectWords={(amount: number) => {
-                            setCorrectWords(amount);
-                        }} />
-                        <hr className="game-words-hr" />
-                        <div className="game-words-result">
-                            Totaal punten: <span className="game-words-result-value">{correctWords - (diceValue !== undefined ? diceValue : 0)}</span>
-                        </div>
-                    </div>
-                </div> : null}
-            {gameStage === 4 && winPointsValue && !gameOver ?
-                <div className="game-results-wrapper">
-                    <div className="game-results">
-                        <h2 className="game-results-title">Puntentotaal</h2>
-                        <p>Het team dat als eerste {winPointsValue} punten haalt, wint!</p>
-                        <table className="game-results-table">
-                            <tbody>
-                                <tr>
-                                    <th></th>
-                                    <th>
-                                        Team van
-                                </th>
-                                    <th>
-                                        Punten
-                                </th>
-                                </tr>
-                                {getTeamsSortedByPoints()}
-                            </tbody>
-                        </table>
-                        <button onClick={() => setNextTeam()} className="button-style-inverted">Volgende ronde</button>
-                    </div>
-                </div> : null}
-            {gameOver ?
-                <div className="game-win">
-                    <Win team={gameOver} />
-                </div> : null}
-        </div>
-    );
 };
 
 export default Game;
