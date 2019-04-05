@@ -30,37 +30,38 @@ const Words = (props: Props) => {
     }, []);
 
     return (
-        <div className="game-words-wrapper">
+        <div className="words-wrapper">
             <Timer doneTimer={() => props.doneTimer()} />
-            <div className="game-words">
-                <div className="game-words-title-dice-wrapper">
-                    <div className="game-words-current">
-                        {props.currentTeam ? <h2 className="game-words-current-team-title">{"Team " + props.currentTeamIndex}</h2> : null}
-                        {props.currentTeam ? <span className="game-words-current-team-subtitle">{props.currentTeam.players[props.currentTeam.currentPlayer] + " is aan de beurt"}</span> : null}
+            <div className="words-card">
+                <div className="words-title-dice">
+                    <div className="words-current">
+                        {props.currentTeam ? <h2 className="words-current-team-title">{"Team " + props.currentTeamIndex}</h2> : null}
+                        {props.currentTeam ? <span>{props.currentTeam.players[props.currentTeam.currentPlayer] + " is aan de beurt"}</span> : null}
                     </div>
-                    <div className="game-words-dice-wrapper">
-                        <h2 className="game-words-title">Je gooide:</h2>
-                        <div className="game-words-dice">
+                    <div className="words-dice-wrapper">
+                        <h2 className="words-title">Je gooide:</h2>
+                        <div className="words-dice">
                             {props.diceValue}
                         </div>
                     </div>
                 </div>
-                <hr className="game-words-hr" />
-                <form className="words">
+                <hr className="words-hr" />
+                <form className="words-form">
                     {words.map((word, index) => {
                         return (
-                            <label key={index} className="container">{word}
+                            <label key={index} className="words-form-label">
                                 <input type="checkbox" name={word} value={word} onChange={() => {
                                     props.getCorrectWords(document.querySelectorAll('input[type="checkbox"]:checked').length);
                                 }} />
-                                <span className="checkmark"></span>
+                                <span className="words-form-label-text">{word}</span>
+                                <span className="words-form-checkmark"></span>
                             </label>
                         );
                     })}
                 </form>
-                <hr className="game-words-hr" />
-                <div className="game-words-result">
-                    Totaal punten: <span className="game-words-result-value">{props.currentPoints}</span>
+                <hr className="words-hr" />
+                <div className="words-result">
+                    Totaal punten: <span className="words-result-value">{props.currentPoints}</span>
                 </div>
             </div>
         </div>

@@ -1,74 +1,169 @@
-@import 'Variables';
+@import "Variables";
 
-.words {
-    display: flex;
-    flex-direction: column;
+.words-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin: .7em;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.words-card {
+  background-color: $color-text-primary;
+  box-shadow: 0 4px 8px 0 $color-card-box-shadow;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 1em;
+
+  @media screen and (max-width: 600px) {
+    margin-bottom: 2em;
   }
-  
-  /* Hide the browser's default checkbox */
-  .container input {
+
+  @media screen and (min-width: 600px) {
+    min-width: 350px;
+    padding: 2em;
+  }
+}
+
+.words-title-dice {
+  display: flex;
+}
+
+@media screen and (min-width: 600px) {
+  .words-current {
+    color: $color-text-primary;
+    text-align: center;
+    margin-bottom: 1em;
     position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+    right: 6em;
+    top: 3em;
   }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: $color-checkmark-background;
-    border-radius: 8px;
+}
+
+@media screen and (max-width: 600px) {
+  .words-current {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
-    background-color: $color-checkmark-hover-background;
+
+  .words-current-team-title {
+    margin: 0;
   }
-  
-  /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
-    background-color: $color-checkmark-check;
+}
+
+.words-dice-wrapper {
+  margin-left: auto;
+  display: flex;
+}
+
+.words-title {
+  visibility: hidden;
+  color: $color-text-accent;
+  margin-right: 1em;
+  @media screen and (min-width: 600px) {
+    visibility: visible;
   }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid $color-checkmark;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
+}
+
+.words-dice {
+  background-color: $color-dice-background;
+  border: 2px solid $color-dice-border;
+  border-radius: 4px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-left: auto;
+  margin: 8px;
+}
+
+.words-hr {
+  width: 100%;
+  border: 1px solid $color-text-accent;
+}
+
+.words-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.words-result {
+  margin-top: 1em;
+  font-size: 1.2em;
+}
+
+.words-result-value {
+  font-weight: bold;
+  font-size: 1.25em;
+  margin-left: 0.5em;
+}
+
+.words-form-label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin: 0.7em;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.words-form-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.words-form-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: $color-checkmark-background;
+  border-radius: 8px;
+}
+
+.words-form-label:hover input ~ .words-form-checkmark {
+  background-color: $color-checkmark-hover-background;
+}
+
+.words-form-label input:checked ~ .words-form-checkmark {
+  background-color: $color-checkmark-check;
+}
+
+.words-form-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.words-form-label input:checked ~ .words-form-checkmark:after {
+  display: block;
+}
+
+.words-form-label input:checked ~ .words-form-label-text {
+  text-decoration: line-through;
+  color: $color-checkmark-text-checked;
+}
+
+.words-form-label .words-form-checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid $color-checkmark;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
