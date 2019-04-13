@@ -71,6 +71,8 @@ $t: 30;
   z-index: 2;
   -webkit-animation: fadeout 0.5s ($t + 1) + s 1 linear;
   -webkit-animation-fill-mode: forwards;
+  -webkit-animation: alert 0.5s ($t - 5) + s 5 linear;
+  -webkit-animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes l-rotate {
@@ -103,5 +105,26 @@ $t: 30;
   }
   100% {
     opacity: 0.5;
+  }
+}
+
+@-webkit-keyframes alert {
+  0% {
+    background-color: red;
+  }
+  20% {
+    background-color: blue;
+  }
+  40% {
+    background-color: red;
+  }
+  60% {
+    background-color: blue;
+  }
+  80% {
+    background-color: red;
+  }
+  100% {
+    background-color: blue;
   }
 }
