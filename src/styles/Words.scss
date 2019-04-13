@@ -7,9 +7,6 @@
 }
 
 .words-card {
-  background-color: $color-text-primary;
-  box-shadow: 0 4px 8px 0 $color-card-box-shadow;
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -22,6 +19,9 @@
   @media screen and (min-width: 600px) {
     min-width: 350px;
     padding: 2em;
+    background-color: $color-text-primary;
+    box-shadow: 0 4px 8px 0 $color-card-box-shadow;
+    border-radius: 8px;
   }
 }
 
@@ -42,6 +42,7 @@
 
 @media screen and (max-width: 600px) {
   .words-current {
+    color: $color-text-primary;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -60,7 +61,6 @@
 
 .words-title {
   visibility: hidden;
-  color: $color-text-accent;
   margin-right: 1em;
   @media screen and (min-width: 600px) {
     visibility: visible;
@@ -84,6 +84,9 @@
 .words-hr {
   width: 100%;
   border: 1px solid $color-text-accent;
+  @media screen and (max-width: 600px) {
+    border: 1px solid $color-text-primary;
+  }
 }
 
 .words-form {
@@ -102,6 +105,9 @@
 
 .words-result {
   flex: 1;
+  @media screen and (max-width: 600px) {
+    color: $color-text-primary;
+  }
 }
 
 .words-result-value {
@@ -121,6 +127,9 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  @media screen and (max-width: 600px) {
+    color: $color-text-primary;
+  }
 }
 
 .words-form-label input {

@@ -1,13 +1,17 @@
-@import 'Variables';
+@import "Variables";
 
 .credit-wrapper {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  visibility: hidden;
+  @media screen and (min-width: 600px) {
+    visibility: visible;
+  }
 }
 
 .credit {
-    position: relative;
-    left: -50%;
-    color: $color-text-primary;
+  position: relative;
+  left: -50%;
+  color: $color-text-primary;
 }
