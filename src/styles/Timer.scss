@@ -71,7 +71,7 @@ $t: 30;
   z-index: 2;
   -webkit-animation: fadeout 0.5s ($t + 1) + s 1 linear;
   -webkit-animation-fill-mode: forwards;
-  -webkit-animation: alert 0.5s ($t - 5) + s 5 linear;
+  -webkit-animation: alert 0.5s ($t - 5) + s 10 linear;
   -webkit-animation-fill-mode: forwards;
 }
 
@@ -110,21 +110,18 @@ $t: 30;
 
 @-webkit-keyframes alert {
   0% {
-    background-color: red;
+    transform: scale(1.5);
   }
-  20% {
-    background-color: blue;
+  25% {
+    transform: scale(1);
   }
-  40% {
-    background-color: red;
+  50% {
+    transform: scale(1.5);
   }
-  60% {
-    background-color: blue;
-  }
-  80% {
-    background-color: red;
+  75% {
+    transform: scale(1);
   }
   100% {
-    background-color: blue;
+    transform: scale(1.5);
   }
 }
