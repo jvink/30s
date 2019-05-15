@@ -1,6 +1,5 @@
 Roadmap:
 
-- Uitleg
 - Team wijzigen halverwege het spel
 - Woorden blacklisten die al geweest zijn
 - Language support
