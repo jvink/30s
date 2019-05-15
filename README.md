@@ -8,6 +8,9 @@ Roadmap:
 
 Updates:
 
+0.1.3 - released: 15-5-2019
+- Added Help functionality
+
 0.1.2 - released: 15-5-2019
 - Improved timer: Better visibility when time runs out.
 - Bug fixes
