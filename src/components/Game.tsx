@@ -17,10 +17,6 @@ const Game = () => {
     const [winPointsValue, setWinPointsValue] = useState<number>();
     const [gameOver, setGameOver] = useState<ITeam>();
 
-    const getRandomTeam = (): ITeam => {
-        return teams[Math.floor(Math.random() * teams.length)];
-    }
-
     const setNextTeam = (): void => {
         const currentTeamIndex = teams.findIndex((team) => team.players === currentTeam.players);
         setDiceValue(undefined);
@@ -35,6 +31,10 @@ const Game = () => {
     }
 
     useEffect(() => {
+        const getRandomTeam = (): ITeam => {
+            return teams[Math.floor(Math.random() * teams.length)];
+        }
+
         if (!currentTeam) {
             setCurrentTeam(getRandomTeam);
         }
@@ -42,10 +42,13 @@ const Game = () => {
             teams.map((team) => {
                 if (team.points === winPointsValue || team.points > winPointsValue) {
                     setGameOver(team);
+                    return null;
+                } else {
+                    return null;
                 }
             })
         }
-    }, [teams]);
+    }, [teams, currentTeam, winPointsValue]);
 
     const doneTeam = (createdTeams: Array<ITeam>, winPoints: number): void => {
         setWinPointsValue(winPoints);

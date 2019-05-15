@@ -23,7 +23,9 @@ const Team = (props: any) => {
                                 if (player === inputs[teamIndex]) {
                                     double = true;
                                     ToastsStore.error("Spelers mogen niet dezelfde naam hebben!");
+                                    return null;
                                 };
+                                return null;
                             });
                             return double ? { ...prevTeams[teamIndex] } : { ...prevTeams[teamIndex], players: [...prevTeams[teamIndex].players, inputs[teamIndex]] };
                         } else {
@@ -87,6 +89,8 @@ const Team = (props: any) => {
             inputs.map((v: any, j: number) => {
                 if (j === i) {
                     return value;
+                } else {
+                    return null;
                 }
             })
         );

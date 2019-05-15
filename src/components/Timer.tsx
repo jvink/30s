@@ -9,12 +9,13 @@ const Timer = ({ doneTimer }: Props) => {
     const [timerValue, setTimerValue] = useState<number>(30);
 
     useEffect(() => {
-        countdownTimer();
-    }, [timerValue]);
+        const countdownTimer = (): void => {
+            timerValue > 0 ? setTimeout(() => setTimerValue(timerValue - 1), 1000) : doneTimer();
+        }
 
-    const countdownTimer = (): void => {
-        timerValue > 0 ? setTimeout(() => setTimerValue(timerValue - 1), 1000) : doneTimer();
-    }
+        countdownTimer();
+    }, [timerValue, doneTimer]);
+
 
     return (
         <div className="circle center">
