@@ -5,6 +5,10 @@
   flex-direction: column;
 }
 
+.game-teams-header {
+  display: flex;
+}
+
 .game-teams-title {
   color: $color-text-primary;
   @media screen and (max-width: 600px) {
@@ -14,6 +18,12 @@
   @media screen and (max-width: 350px) {
     visibility: hidden;
   }
+}
+
+.game-teams-help {
+  margin-left: auto;
+  color: $color-text-primary;
+  cursor: pointer;
 }
 
 .game-dice {
@@ -121,14 +131,14 @@
   background-color: $color-text-primary;
   box-shadow: 0 4px 8px 0 $color-card-box-shadow;
   padding: 2em;
-  margin: .5em;
+  margin: 0.5em;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
 
   @media screen and (max-width: 600px) {
     width: 90%;
-    padding: .5em;
+    padding: 0.5em;
   }
 
   @media screen and (min-width: 600px) {

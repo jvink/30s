@@ -6,6 +6,7 @@ import Words from './Words';
 import Countdown from './Countdown';
 import Win from './Win';
 import Result from './Result';
+import Help from './Help';
 import '../styles/Game.scss';
 
 const Game = () => {
@@ -50,6 +51,14 @@ const Game = () => {
         }
     }, [teams, currentTeam, winPointsValue]);
 
+    const getHelp = (): void => {
+        setGameStage(5);
+    }
+
+    const resetGameStage = (): void => {
+        setGameStage(0);
+    }
+
     const doneTeam = (createdTeams: Array<ITeam>, winPoints: number): void => {
         setWinPointsValue(winPoints);
         setTeams(createdTeams);
@@ -93,7 +102,8 @@ const Game = () => {
         switch (gameStage) {
             case 0:
                 return <Team
-                    onTeamsCreated={(createdTeams: Array<ITeam>, winPoints: number) => doneTeam(createdTeams, winPoints)} />;
+                    onTeamsCreated={(createdTeams: Array<ITeam>, winPoints: number) => doneTeam(createdTeams, winPoints)}
+                    getHelp={getHelp} />;
             case 1:
                 return <Dice
                     currentTeam={currentTeam}
@@ -121,6 +131,8 @@ const Game = () => {
                     teams={teams}
                     winPointsValue={winPointsValue || 0}
                     setNextTeam={() => setNextTeam()} />;
+            case 5:
+                return <Help resetGameStage={resetGameStage}/>;
             default:
                 return <h1>Not found</h1>;
         }

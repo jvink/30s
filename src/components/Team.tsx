@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import ITeam from '../types/Types';
 import AddPlayerIcon from 'mdi-react/AccountPlusIcon';
 import DeleteIcon from 'mdi-react/DeleteIcon';
+import HelpIcon from 'mdi-react/HelpCircleOutlineIcon';
+import ReactTooltip from 'react-tooltip';
 import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
 import '../styles/Team.scss';
 
@@ -121,7 +123,11 @@ const Team = (props: any) => {
 
     return (
         <div>
-            <h2 className="game-teams-title">Stel de teams samen!</h2>
+            <ReactTooltip />
+            <div className="game-teams-header">
+                <h2 className="game-teams-title">Stel de teams samen!</h2>
+                <h2 className="game-teams-help" data-tip="Speluitleg" onClick={() => props.getHelp()}><HelpIcon/></h2>
+            </div>
             <div className="teams-wrapper">
                 <ToastsContainer position={ToastsContainerPosition.BOTTOM_CENTER} store={ToastsStore} lightBackground />
                 {teams.map((team, teamIndex) => {
