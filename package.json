@@ -1,6 +1,6 @@
 {
   "name": "30s",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://jvink.github.io/30s",
   "dependencies": {
     "@types/jest": "24.0.11",
